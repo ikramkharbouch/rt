@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 21:05:55 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/05 16:18:32 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/07 18:49:50 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,6 @@
 # define BLOCK		3
 # define KEY		4
 # define VALUE		5
-
-# define CAMERA		6
-# define LIGHT		7
-# define SHAPE		8 
 
 typedef struct		s_block_list
 {
@@ -55,11 +51,5 @@ int					is_block(char *str);
 int					is_list(char *str);
 char				*pretty_name(char *str);
 int					get_type(char *str);
-int					get_name(char *str);
-
-int					check(t_parser *p);
-int					check_cam_keys(t_block_list *list);
-int					check_light_keys(t_block_list *list);
-int					check_shape_keys(t_block_list *list);
 
 #endif

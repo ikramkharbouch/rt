@@ -6,7 +6,7 @@
 #    By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/02 20:53:05 by ikrkharb          #+#    #+#              #
-#    Updated: 2020/02/07 17:46:44 by ikrkharb         ###   ########.fr        #
+#    Updated: 2020/02/07 18:28:01 by ikrkharb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,14 @@ NAME = rtv1
 FLAGS = -g -Wall -Werror -Wextra
 
 SRCS = 	srcs/rtv1.c\
+		srcs/data.c\
+		srcs/manage.c\
 		srcs/mlx_setup.c\
 		srcs/mlx_hooks.c\
-		srcs/data.c\
-		srcs/init_scene.c
+		srcs/init_scene.c\
+		checker/checker.c\
+		checker/check_keys.c\
+		srcs/utils.c\
 
 LIBFT = libft/libft.a
 

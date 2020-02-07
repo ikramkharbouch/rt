@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 15:53:32 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/07 17:46:20 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/07 19:01:59 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,16 @@
 # include "../libft/libft.h"
 # include "../parser/parser.h"
 
-# define HEIGHT 800
-# define WIDTH  800
+# define HEIGHT 	800
+# define WIDTH  	800
+# define CAMERA		6
+# define LIGHT		7
+# define SHAPE		8
+# define EYE		9
+# define LOOK_AT	10
+# define FOV		11
+# define DIST		12
+
 # define FALSE  1e+30
 # define DEG_TO_RAD(X) (X * (M_PI / 180.0));
 
@@ -115,14 +123,20 @@ typedef struct		s_env
 }					t_env;
 
 /*
+** Manage the project and verify all errors;
+*/
+
+int     	manage_rtv1(char *filename, t_env *env);
+
+/*
 **	MLX SETUP && MLX HOOKS.
 */
 
-void    mlx_setup(t_mlx *mlx);
-void 	ft_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
-int 	mouse_press(int button, int x, int y, void *param);
-int 	key_press(int keycode, void *param);
-int 	close_win(void *param);
+void    	mlx_setup(t_mlx *mlx);
+void 		ft_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
+int 		mouse_press(int button, int x, int y, void *param);
+int 		key_press(int keycode, void *param);
+int 		close_win(void *param);
 
 /*
 ** Initialization of structs values and setup.
@@ -145,7 +159,19 @@ void        free_env(t_env *env);
 ** Data manipulation.
 */
 
-int     get_data(char *filename, t_env *env);
-void    fill_structs(t_parser *p, t_env *env);
+t_parser    *get_data(char *filename);
+int         fill_data(t_parser *p, t_env *env);
+int         check_data(t_parser *p);
+int			check(t_parser *p);
+int			check_cam_keys(t_block_list *list);
+int			check_light_keys(t_block_list *list);
+int			check_shape_keys(t_block_list *list);
+
+/*
+** Utils
+*/
+int     	find_block(t_block *block);
+int     	find_camera_key(char *key);
+t_vec		char_to_vec(char *str);
 
 #endif
