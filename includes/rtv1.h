@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 15:53:32 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/05 20:31:43 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/07 17:46:20 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,12 +110,12 @@ typedef struct      s_scene
 
 typedef struct		s_env
 {
-	t_mlx			mlx;
-	t_scene			scene;
+	t_mlx			*mlx;
+	t_scene			*scene;
 }					t_env;
 
 /*
-**	MLX SETUP && MLX HOOKS
+**	MLX SETUP && MLX HOOKS.
 */
 
 void    mlx_setup(t_mlx *mlx);
@@ -125,14 +125,27 @@ int 	key_press(int keycode, void *param);
 int 	close_win(void *param);
 
 /*
-** Initialization of structs values and env setup.
+** Initialization of structs values and setup.
 */
 
-void		env_setup(t_mlx *mlx);
+t_env       *env_setup(t_mlx *mlx);
+t_scene     *scene_setup(void);
 void    	init_mlx_values(t_mlx *mlx);
-void		env_init(void);
 void    	init_scene_values(t_camera *camera, t_list *lights, t_list *objects);
 
 t_env g_env;
+
+/*
+** Free allocated memory.
+*/
+
+void        free_env(t_env *env);
+
+/*
+** Data manipulation.
+*/
+
+int     get_data(char *filename, t_env *env);
+void    fill_structs(t_parser *p, t_env *env);
 
 #endif

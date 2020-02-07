@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_and_fill_data.c                                :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/05 16:35:37 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/05 19:17:03 by ikrkharb         ###   ########.fr       */
+/*   Created: 2020/02/07 17:35:46 by ikrkharb          #+#    #+#             */
+/*   Updated: 2020/02/07 17:36:56 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "rtv1.h"
+#include "rtv1.h"
 
-void    fill_structs(t_parser *p, t_env *env)
+void        free_env(t_env *env)
 {
-    
+    ft_memdel((void *)env);
 }
-
-int     get_data(char *filename, t_env *env)
-{
-    t_parser    *p;
-
-    if (!(p = parse(filename)))
-        return (0);
-    return (p);
-}
-
-

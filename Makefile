@@ -6,7 +6,7 @@
 #    By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/02 20:53:05 by ikrkharb          #+#    #+#              #
-#    Updated: 2020/02/05 17:19:40 by ikrkharb         ###   ########.fr        #
+#    Updated: 2020/02/07 17:46:44 by ikrkharb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ FLAGS = -g -Wall -Werror -Wextra
 SRCS = 	srcs/rtv1.c\
 		srcs/mlx_setup.c\
 		srcs/mlx_hooks.c\
-		srcs/get_and_fill_data.c\
+		srcs/data.c\
 		srcs/init_scene.c
 
 LIBFT = libft/libft.a
