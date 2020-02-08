@@ -6,11 +6,11 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 19:07:50 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/07 18:45:13 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/08 16:30:33 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "../includes/rtv1.h"
 
 int check_cam_keys(t_block_list *list)
 {

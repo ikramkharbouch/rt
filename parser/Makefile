@@ -6,7 +6,7 @@
 #    By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/04 21:43:33 by ikrkharb          #+#    #+#              #
-#    Updated: 2020/01/21 16:19:23 by ikrkharb         ###   ########.fr        #
+#    Updated: 2020/02/08 16:30:01 by ikrkharb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,7 @@ NAME = libparser.a
 FLAGS = -Wall -Wextra -Werror
 
 SRC = 	parser.c\
-		utils.c\
-		checker.c\
-		check_keys.c
+		utils.c
 
 OBJ = $(SRC:.c=.o)
 

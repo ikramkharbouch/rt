@@ -6,11 +6,11 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 18:09:32 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/07 18:45:25 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/08 16:37:14 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "../includes/rtv1.h"
 
 int		light_exists(t_parser *p)
 {
@@ -22,7 +22,7 @@ int		light_exists(t_parser *p)
 	while (i < p->n)
 	{
 		block = &(p->blocks[i]);
-		name = find_block(block->name);
+		name = find_block(block);
 		if (i == 1 && !(name == LIGHT))
 			return (0);
 		if (name == LIGHT)
@@ -37,7 +37,7 @@ int		order_exists(t_block *block)
 	t_block_list	*list;
 	int				name;
 
-	name = find_block(block->name);
+	name = find_block(block);
 	list = block->list;
 	if (name == CAMERA)
 	{
@@ -76,7 +76,7 @@ int		camera_exists(t_parser *p)
 	while (i < p->n)
 	{
 		block = &(p->blocks[i]);
-		name = find_block(block->name);
+		name = find_block(block);
 		if (i == 0 && !(name == CAMERA))
 			return (0);
 		if (name == CAMERA)

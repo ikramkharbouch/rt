@@ -6,11 +6,11 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 16:27:13 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/05 16:28:09 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/08 16:32:11 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "rtv1.h"
+# include "../includes/rtv1.h"
 
 int mouse_press(int button, int x, int y, void *param)
 {

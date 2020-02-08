@@ -6,33 +6,30 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 23:52:28 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/07 17:49:47 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/08 17:35:04 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
- 
+# include "../includes/rtv1.h"
+
 int         main(int ac, char *av[])
 {
-    t_env   *env;
-    
-    env = NULL;
     if (ac == 2)
     {
-        t_mlx *mlx;
+        t_mlx mlx;
 
-        mlx = (t_mlx *)malloc(sizeof(t_mlx));
-        mlx_setup(mlx);
-        env = env_setup(mlx);
-        if (!manage_rtv1(av[1], env))
+        mlx_setup(&mlx);
+        if (!manage_rtv1(av[1], &mlx))
         {
             write(1, "Error\n", 6);
             return (0);
         }
-        mlx_loop(mlx->mlx_ptr);
+        mlx_hook(mlx.win_ptr, 4, 0, mouse_press, &mlx);
+	    mlx_hook(mlx.win_ptr, 2, 0, key_press, &mlx);
+	    mlx_hook(mlx.win_ptr, 17, 0, close_win, &mlx);
+        mlx_loop((&(mlx))->mlx_ptr);
     }
     else
         write(1, "\033[0;31mEnter a valid filename\n", 30);
-    free_env(env);
     return (0);
 }

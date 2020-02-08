@@ -6,11 +6,11 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 17:35:46 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/07 17:36:56 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/08 16:32:01 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+# include "../includes/rtv1.h"
 
 void        free_env(t_env *env)
 {

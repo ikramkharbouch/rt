@@ -6,13 +6,13 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 17:49:57 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/07 18:06:57 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/08 17:18:07 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+# include "../includes/rtv1.h"
 
-int     manage_rtv1(char *filename, t_env *env)
+int     manage_rtv1(char *filename, t_mlx *mlx)
 {
     t_parser *p;
 
@@ -20,7 +20,7 @@ int     manage_rtv1(char *filename, t_env *env)
         return (0);
     if (!check(p))
         return (0);
-    if (!(fill_data(p, env)))
+    if (!(env_setup(mlx, p)))
         return (0);
     return (1);
 }

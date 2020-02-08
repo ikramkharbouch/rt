@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 15:53:32 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/07 19:01:59 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/08 17:24:26 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,15 @@
 # define LOOK_AT	10
 # define FOV		11
 # define DIST		12
+# define ORIGIN		13
+# define INTENSITY	14
+# define NAME		15
+# define CENTER		16
+# define RADIUS		17
+# define KS			18
+# define KD			19
+# define N			20
+# define COLOR		21
 
 # define FALSE  1e+30
 # define DEG_TO_RAD(X) (X * (M_PI / 180.0));
@@ -99,7 +108,6 @@ typedef struct      s_light
     t_vec           dir;
     t_point         origin;
     float           intensity;
-    struct s_light  *next;
 }					t_light;
 
 typedef struct      s_color
@@ -112,21 +120,25 @@ typedef struct      s_color
 typedef struct      s_scene
 {
     t_camera        camera;
-    t_light         *lights;
-    t_object		*objects;
+    t_list			*lights;
+    t_list			*objects;
+	struct s_scene	*next;
 }                   t_scene;
 
 typedef struct		s_env
 {
 	t_mlx			*mlx;
 	t_scene			*scene;
+	struct s_env	*next;
 }					t_env;
+
+t_env	g_env;
 
 /*
 ** Manage the project and verify all errors;
 */
 
-int     	manage_rtv1(char *filename, t_env *env);
+int     	manage_rtv1(char *filename, t_mlx *mlx);
 
 /*
 **	MLX SETUP && MLX HOOKS.
@@ -142,12 +154,11 @@ int 		close_win(void *param);
 ** Initialization of structs values and setup.
 */
 
-t_env       *env_setup(t_mlx *mlx);
-t_scene     *scene_setup(void);
+t_env       *env_setup(t_mlx *mlx, t_parser *p);
+t_scene     *scene_setup(t_parser *p);
 void    	init_mlx_values(t_mlx *mlx);
-void    	init_scene_values(t_camera *camera, t_list *lights, t_list *objects);
+void    	init_scene_values(t_camera *camera, t_light *light, t_object *object);
 
-t_env g_env;
 
 /*
 ** Free allocated memory.
@@ -160,7 +171,7 @@ void        free_env(t_env *env);
 */
 
 t_parser    *get_data(char *filename);
-int         fill_data(t_parser *p, t_env *env);
+t_scene     *fill_data(t_parser *p, t_scene *scene);
 int         check_data(t_parser *p);
 int			check(t_parser *p);
 int			check_cam_keys(t_block_list *list);
@@ -170,8 +181,11 @@ int			check_shape_keys(t_block_list *list);
 /*
 ** Utils
 */
+
 int     	find_block(t_block *block);
 int     	find_camera_key(char *key);
+int     	find_light_key(char *key);
+int     	find_object_key(char *key);
 t_vec		char_to_vec(char *str);
 
 #endif

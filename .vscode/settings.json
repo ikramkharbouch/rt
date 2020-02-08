@@ -1,5 +1,14 @@
 {
     "files.associations": {
-        "__locale": "c"
+        "__locale": "c",
+        "__split_buffer": "cpp",
+        "locale": "cpp",
+        "vector": "cpp",
+        "*.tcc": "cpp",
+        "memory": "cpp",
+        "sstream": "cpp",
+        "functional": "cpp",
+        "hashtable": "cpp",
+        "typeinfo": "c"
     }
 }
