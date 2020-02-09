@@ -12,6 +12,12 @@ light:
   - intensity:
   1
 
+  light:
+    - origin:
+     1 -5 0
+    - intensity:
+    0.4
+
   object:
   - name:
   sphere
@@ -27,3 +33,19 @@ light:
   3
   - color:
   255
+
+  object:
+    - name:
+    sphere
+    - center:
+    0 0 1
+    - radius:
+    7
+    - ks:
+    0.6
+    - kd:
+    1
+    - n:
+    20
+    - color:
+    254

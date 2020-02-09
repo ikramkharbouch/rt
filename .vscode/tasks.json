@@ -3,7 +3,7 @@
         {
             "type": "shell",
             "label": "gcc build active file",
-            "command": "make -C /Users/ikrkharb/RTV1-again",
+            "command": "make -C /Users/ikrkharb/Graphics/RTv1",
             "args": [
             ],
             "options": {

@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 15:53:32 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/08 17:24:26 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/08 19:31:17 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,13 +132,15 @@ typedef struct		s_env
 	struct s_env	*next;
 }					t_env;
 
-t_env	g_env;
+t_env	*g_env;
 
 /*
 ** Manage the project and verify all errors;
 */
 
 int     	manage_rtv1(char *filename, t_mlx *mlx);
+void        debug_obj(void);
+void        debug_light(void);
 
 /*
 **	MLX SETUP && MLX HOOKS.

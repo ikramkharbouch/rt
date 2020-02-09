@@ -6,7 +6,7 @@
 #    By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/02 20:53:05 by ikrkharb          #+#    #+#              #
-#    Updated: 2020/02/08 16:40:19 by ikrkharb         ###   ########.fr        #
+#    Updated: 2020/02/08 19:06:44 by ikrkharb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS = 	srcs/rtv1.c\
 		srcs/utils.c\
 		srcs/free.c\
 		srcs/env_setup.c\
+		DEBUG/debug_env.c\
 
 LIBFT = libft/libft.a
 
