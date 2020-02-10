@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 15:56:07 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/10 17:29:18 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/10 21:25:53 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_ray       ray_gen(int i, int j)
     camera = g_env->scene->camera;
     ray.origin = camera.eye;
     delta_x = camera.h_height / HEIGHT;
-    delta_y = delta_x;
+    delta_y = camera.h_width / WIDTH;
     if (i >= 0 && i <= HEIGHT / 2)
         x = -(camera.h_height / 2) + i * delta_x;
     if (i > HEIGHT / 2)

@@ -6,9 +6,23 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 16:50:38 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/10 16:58:35 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/10 20:16:47 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/rtv1.h"
 
+void            draw_scene(void)
+{
+    int i;
+    int j;
+
+    while (i < HEIGHT)
+    {
+        j = 0;
+        while (j < WIDTH)
+        {
+            
+        }
+    }
+}

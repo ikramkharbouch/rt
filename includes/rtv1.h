@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 15:53:32 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/10 17:08:53 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/10 19:56:54 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 # define HEIGHT 	800
 # define WIDTH  	800
+# define FALSE		-1
 # define CAMERA		6
 # define LIGHT		7
 # define SHAPE		8
@@ -101,7 +102,20 @@ typedef struct      s_object
 	float 	        n;
 	float	        t;
     int             color;
+	t_equation		eq;
 }                   t_object;
+
+typedef	struct 		s_equation
+{
+	float			a;
+	float			b;
+	float			c;
+	float			discr;
+	float			t1;
+	float			t2;
+	float			min_t;
+}					t_equation;
+
 
 typedef struct      s_light
 {
@@ -207,5 +221,14 @@ t_vec 		vec_scale(t_vec v1, t_vec v2);
 t_vec 		vec_kscale(float k, t_vec v2);
 t_vec 		vec_cross(t_vec v1, t_vec v2);
 t_vec 		vec_normalize(t_vec v);
+
+/*
+** Intersections between ray and objects.
+*/
+
+float       intersect_ray_sphere(t_ray *ray, t_object *object);
+float       intersect_ray_plane(void);
+float       intersect_ray_cylinder(void);
+float       intersect_ray_cone(void);
 
 #endif
