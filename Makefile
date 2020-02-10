@@ -6,7 +6,7 @@
 #    By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/02 20:53:05 by ikrkharb          #+#    #+#              #
-#    Updated: 2020/02/08 19:06:44 by ikrkharb         ###   ########.fr        #
+#    Updated: 2020/02/10 17:32:32 by ikrkharb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,10 @@ SRCS = 	srcs/rtv1.c\
 		srcs/free.c\
 		srcs/env_setup.c\
 		DEBUG/debug_env.c\
+		srcs/ray_gen.c\
+		srcs/draw.c\
+		srcs/math_ops.c\
+		srcs/vec_scaling.c\
 
 LIBFT = libft/libft.a
 

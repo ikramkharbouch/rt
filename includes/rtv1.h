@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 15:53:32 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/08 19:31:17 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/10 17:08:53 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,7 @@ int			check_light_keys(t_block_list *list);
 int			check_shape_keys(t_block_list *list);
 
 /*
-** Utils
+** Utils.
 */
 
 int     	find_block(t_block *block);
@@ -189,5 +189,23 @@ int     	find_camera_key(char *key);
 int     	find_light_key(char *key);
 int     	find_object_key(char *key);
 t_vec		char_to_vec(char *str);
+
+/*
+** Ray generating.
+*/
+
+t_ray       ray_gen(int i, int j);
+
+/*
+** Maths operations on vectors.
+*/
+
+float 		vec_dot(t_vec v1, t_vec v2);
+t_vec 		vec_sub(t_vec v1, t_vec v2);
+t_vec 		vec_sum(t_vec v1, t_vec v2);
+t_vec 		vec_scale(t_vec v1, t_vec v2);
+t_vec 		vec_kscale(float k, t_vec v2);
+t_vec 		vec_cross(t_vec v1, t_vec v2);
+t_vec 		vec_normalize(t_vec v);
 
 #endif
