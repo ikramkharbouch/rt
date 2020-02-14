@@ -28,6 +28,6 @@ light:
   - color:
   255
   - rot:
-    on 30.0 60.0 70.0
+    off 30.0 60.0 70.0
   - trans:
-    on 2.4 0 1
+    on -5 0 3

@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:17:06 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/14 19:28:13 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/14 22:47:54 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,5 +232,12 @@ int 	check_plane_keys(t_block_list *plane);
 int 	check_cone_keys(t_block_list *cone);
 int 	check_shape_keys(t_block_list *list);
 int		check(t_parser *p);
+
+
+/*
+** Transformation of objects
+*/
+void		rotate(t_list **objects);
+void		translate(t_list **objects);
 
 #endif
