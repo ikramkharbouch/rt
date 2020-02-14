@@ -1,23 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_scaling.c                                      :+:      :+:    :+:   */
+/*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/10 17:10:01 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/10 17:10:20 by ikrkharb         ###   ########.fr       */
+/*   Created: 2020/02/14 19:09:58 by ikrkharb          #+#    #+#             */
+/*   Updated: 2020/02/14 19:34:14 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rtv1.h"
 
-t_vec vec_scale(t_vec v1, t_vec v2)
-{
-    return ((t_vec){v1.x * v2.x, v1.y * v2.y, v1.z * v2.z});
-}
-
-t_vec vec_kscale(float k, t_vec v2)
-{
-    return ((t_vec){k * v2.x, k * v2.y, k * v2.z});
-}

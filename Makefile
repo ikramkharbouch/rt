@@ -6,31 +6,29 @@
 #    By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/02 20:53:05 by ikrkharb          #+#    #+#              #
-#    Updated: 2020/02/10 18:13:33 by ikrkharb         ###   ########.fr        #
+#    Updated: 2020/02/14 19:34:30 by ikrkharb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = rtv1
 
-FLAGS = -g -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra
 
-SRCS = 	srcs/rtv1.c\
-		srcs/data.c\
-		srcs/manage.c\
-		srcs/mlx_setup.c\
-		srcs/mlx_hooks.c\
-		srcs/init_env_values.c\
+SRCS = 	srcs/ray_gen.c\
+		srcs/fill_data.c\
+		srcs/hooks.c\
+		srcs/parser.c\
+		srcs/rtv1.c\
+		srcs/vectors_ops.c\
+		DEBUG/debug.c\
+		srcs/objects.c\
+		srcs/intersection.c\
+		srcs/utils.c \
+		srcs/color.c\
+		srcs/phong_model.c\
 		checker/checker.c\
 		checker/check_keys.c\
-		srcs/utils.c\
-		srcs/free.c\
-		srcs/env_setup.c\
-		DEBUG/debug_env.c\
-		srcs/ray_gen.c\
-		srcs/draw.c\
-		srcs/math_ops.c\
-		srcs/vec_scaling.c\
-		srcs/intersections.c\
+		srcs/transform.c\
 
 LIBFT = libft/libft.a
 

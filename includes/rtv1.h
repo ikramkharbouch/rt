@@ -5,25 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/05 15:53:32 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/10 19:56:54 by ikrkharb         ###   ########.fr       */
+/*   Created: 2020/01/02 17:17:06 by ikrkharb          #+#    #+#             */
+/*   Updated: 2020/02/14 19:28:13 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RTV1_H
-# define RTV1_H
+#define RTV1_H
 
-# include "mlx.h"
-# include <math.h>
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdio.h>
-# include "../libft/libft.h"
-# include "../parser/parser.h"
+#include "mlx.h"
+#include <math.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdio.h>
+#include "../libft/libft.h"
+#include "../parser/parser.h"
 
 # define HEIGHT 	800
 # define WIDTH  	800
 # define FALSE		-1
+# define NEAR		1e+30
+# define FAR		1e-6
 # define CAMERA		6
 # define LIGHT		7
 # define SHAPE		8
@@ -40,195 +42,195 @@
 # define KD			19
 # define N			20
 # define COLOR		21
+# define SPHERE		22
+# define PLANE		23
+# define CYLINDER	24
+# define CONE		25
+# define ROT		26
+# define TRANS		27
+#define DEG_TO_RAD(X) (X * (M_PI / 180.0));
 
-# define FALSE  1e+30
-# define DEG_TO_RAD(X) (X * (M_PI / 180.0));
-
-typedef struct      s_mlx
-{
-	void            *mlx_ptr;
-	void            *win_ptr;
-	void            *img_ptr;
-	char            *img_data;
-	int             bits_per_pixel;
-	int             size_line;
-	int             endian;
-	int             x;
-	int             y;
-}                   t_mlx;
-
-typedef struct      s_point
+typedef struct s_point
 {
 	float x;
 	float y;
 	float z;
-}                   t_point;
+} t_point;
 
 typedef t_point t_vec;
 
-typedef struct      s_camera
+typedef struct s_camera
 {
-	t_point         eye;
-	t_point         look_at;
-	t_vec           up;
-	t_vec           u;
-	t_vec           v;
-	t_vec           view_dir;
-	t_vec           bottom_left;
-	t_vec           x_incv;
-	t_vec           y_incv;
-	float           aspect_ratio;
-	float           fov;
-	float           h_width;
-	float           h_height;
-	float           dist;
-}                   t_camera;
+	t_point eye;
+	t_point look_at;
+	t_vec up;
+	t_vec u;
+	t_vec v;
+	t_vec view_dir;
+	t_vec bottom_left;
+	t_vec x_incv;
+	t_vec y_incv;
+	float aspect_ratio;
+	float fov;
+	float h_width;
+	float h_height;
+	float dist;
+} t_camera;
 
-typedef struct      s_ray
+typedef struct s_mlx
 {
-    t_point         origin;
-    t_vec           dir;
-}                   t_ray;
+	void *mlx_ptr;
+	void *win_ptr;
+	void *img_ptr;
+	char *img_data;
+	int bpp;
+	int s_l;
+	int en;
+	int x;
+	int y;
+} t_mlx;
 
-typedef struct      s_object
+typedef	struct 	s_rot
 {
-    t_vec           center;
-    t_vec           vec_dir;
-    char            *name;
-    float 	        radius;
-	float	        alpha;
-	float 	        ks;
-	float 	        kd;
-	float 	        n;
-	float	        t;
-    int             color;
-	t_equation		eq;
-}                   t_object;
+	int			on;
+	int			alpha_x;
+	int			alpha_y;
+	int			alpha_z;
+}				t_rot;
 
-typedef	struct 		s_equation
+typedef	struct 	s_trans
 {
-	float			a;
-	float			b;
-	float			c;
-	float			discr;
-	float			t1;
-	float			t2;
-	float			min_t;
-}					t_equation;
+	int			on;
+	t_vec		vec;
+}				t_trans;
 
-
-typedef struct      s_light
+typedef struct 	s_object
 {
-    t_vec           dir;
-    t_point         origin;
-    float           intensity;
-}					t_light;
+	char 	*name;
+	int		color;
+	t_vec 	center;
+	t_vec	vec_dir;
+	float 	radius;
+	float	alpha;
+	float 	ks;
+	float 	kd;
+	float 	n;
+	double	t;
+	t_rot	rot;
+	t_trans	trans;
+} 				t_object;
 
-typedef struct      s_color
+typedef struct s_light
 {
-    unsigned char   r;
-    unsigned char   g;
-    unsigned char   b;
-}                   t_color;
+	t_point 	origin;
+	t_vec 		dir;
+	float 		intensity;
+	struct s_light *next;
+} t_light;
 
-typedef struct      s_scene
+typedef struct 	s_ray
 {
-    t_camera        camera;
-    t_list			*lights;
-    t_list			*objects;
-	struct s_scene	*next;
-}                   t_scene;
+	t_point origin;
+	t_vec 	dir;
+} 				t_ray;
 
-typedef struct		s_env
+typedef	struct s_scene
 {
-	t_mlx			*mlx;
-	t_scene			*scene;
-	struct s_env	*next;
-}					t_env;
+	t_camera	camera;
+	t_light		light;
+	t_object	obj_type;
+}				t_scene;
 
-t_env	*g_env;
+typedef struct s_color
+{
+    unsigned char r;
+    unsigned char b;
+    unsigned char g;
+}               t_color;
 
-/*
-** Manage the project and verify all errors;
-*/
+void 	ft_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
+int 	mouse_press(int button, int x, int y, void *param);
+int 	key_press(int keycode, void *param);
+int 	close_win(void *param);
+void	ft_mlx_window(t_mlx *mlx);
 
-int     	manage_rtv1(char *filename, t_mlx *mlx);
-void        debug_obj(void);
-void        debug_light(void);
+void 	camera_setup(t_camera *camera);
+t_ray 	generate_ray(t_camera *camera, int i, int j);
+void	debug_camera(t_list *camera);
+void	debug_rot(t_rot *rot);
+void	debug_trans(t_trans *trans);
 
-/*
-**	MLX SETUP && MLX HOOKS.
-*/
+float 	vec_dot(t_vec v1, t_vec v2);
+float 	vec_dot_x_z(t_vec v1, t_vec v2);
+t_vec 	vec_sub(t_vec v1, t_vec v2);
+t_vec 	vec_sum(t_vec v1, t_vec v2);
+t_vec 	vec_scale(t_vec v1, t_vec v2);
+t_vec 	vec_kscale(float k, t_vec v2);
+t_vec 	vec_cross(t_vec v1, t_vec v2);
+t_vec 	vec_normalize(t_vec v);
+t_vec 	vec_kdiv(t_vec v, float k);
 
-void    	mlx_setup(t_mlx *mlx);
-void 		ft_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
-int 		mouse_press(int button, int x, int y, void *param);
-int 		key_press(int keycode, void *param);
-int 		close_win(void *param);
+/* TO DELETE */
+void 	print_obj_props(t_block *block);
+void 	print_light_props(t_light *light);
+void 	read_object_values(int fd, t_block *block);
+void 	read_light_values(int fd, t_light *light);
+void 	print_cam_props(t_camera *camera);
 
-/*
-** Initialization of structs values and setup.
-*/
+void print_cam_props(t_camera *camera);
+void print_light_props(t_light *light);
+/**/
 
-t_env       *env_setup(t_mlx *mlx, t_parser *p);
-t_scene     *scene_setup(t_parser *p);
-void    	init_mlx_values(t_mlx *mlx);
-void    	init_scene_values(t_camera *camera, t_light *light, t_object *object);
+void 		init_cam(t_camera *camera);
+void 		init_light(t_light *light);
+void 		init_obj(t_object *obj);
+void		init_rot(t_rot *rot);
+void		init_trans(t_trans *trans);
+int 		get_data(char *filename, t_mlx *mlx);
+t_vec 		char_to_vec(char *str);
 
+t_list			*Fill_object_data(t_block *block);
+t_camera		Fill_camera_data(t_block *block);
+t_list			*Fill_light_data(t_block *block);
+int 			Fill(t_parser *p, t_mlx *mlx);
 
-/*
-** Free allocated memory.
-*/
+t_camera	ft_create_cam(t_vec eye, t_vec look_at, float fov);
+void		ft_draw_objects(t_mlx *mlx, t_camera camera, t_list *objects);
 
-void        free_env(t_env *env);
+void		create_actual_objs(t_mlx *mlx, t_camera camera, t_list *lights,t_list *objects);
+t_object 	*find_inter(t_camera camera, t_list *objects, int i, int j);
 
-/*
-** Data manipulation.
-*/
+double		sphere(t_ray *ray, t_object *obj);
+float		plane(t_ray *ray, t_object *obj);
+float 		cone(t_ray *ray, t_object *obj);
+float		cylinder(t_ray *ray, t_object *obj);
 
-t_parser    *get_data(char *filename);
-t_scene     *fill_data(t_parser *p, t_scene *scene);
-int         check_data(t_parser *p);
-int			check(t_parser *p);
-int			check_cam_keys(t_block_list *list);
-int			check_light_keys(t_block_list *list);
-int			check_shape_keys(t_block_list *list);
-
-/*
-** Utils.
-*/
-
-int     	find_block(t_block *block);
-int     	find_camera_key(char *key);
-int     	find_light_key(char *key);
-int     	find_object_key(char *key);
-t_vec		char_to_vec(char *str);
-
-/*
-** Ray generating.
-*/
-
-t_ray       ray_gen(int i, int j);
-
-/*
-** Maths operations on vectors.
-*/
-
-float 		vec_dot(t_vec v1, t_vec v2);
-t_vec 		vec_sub(t_vec v1, t_vec v2);
-t_vec 		vec_sum(t_vec v1, t_vec v2);
-t_vec 		vec_scale(t_vec v1, t_vec v2);
-t_vec 		vec_kscale(float k, t_vec v2);
-t_vec 		vec_cross(t_vec v1, t_vec v2);
-t_vec 		vec_normalize(t_vec v);
+t_color     *decimal_to_rgb(int color);
+int			colormap(t_color *c);
+int         color_mix(int color, float a);
+int        	phong_model(t_object *obj, t_ray *ray, t_list *lights);
 
 /*
-** Intersections between ray and objects.
+** Utils
 */
+int		find_block(t_block *block);
+int		find_camera_key(char *key);
+int		find_light_key(char *key);
+int		find_object_key(char *key);
+int		find_object_name(char *name);
+t_rot	char_to_rot(char *str);
+t_trans	char_to_trans(char *str);
 
-float       intersect_ray_sphere(t_ray *ray, t_object *object);
-float       intersect_ray_plane(void);
-float       intersect_ray_cylinder(void);
-float       intersect_ray_cone(void);
+/*
+** The checker functions
+*/
+int 	check_cam_keys(t_block_list *list);
+int 	check_light_keys(t_block_list *list);
+int 	check_sphere_keys(t_block_list *sphere);
+int 	check_cylinder_keys(t_block_list *cylinder);
+int 	check_plane_keys(t_block_list *plane);
+int 	check_cone_keys(t_block_list *cone);
+int 	check_shape_keys(t_block_list *list);
+int		check(t_parser *p);
 
 #endif

@@ -1,0 +1,81 @@
+camera:
+  - eye:
+  0.0 0 -10
+  - look_at: 
+  0 0 0
+  - fov:
+  30.0
+
+light:
+  - origin:
+  10 0 0
+  - intensity:
+  1
+
+  object:
+  - name:
+  cone
+  - center:
+  0 0 0
+  - vec_dir:
+  1 0 0
+  - alpha:
+  30
+  - ks:
+  0.2
+  - kd:
+  0.3
+  - n:
+  0.4
+  - color:
+  680
+
+  object:
+  - name:
+  sphere
+  - center:
+  0 0 5
+  - radius:
+  3
+  - ks:
+  0.2
+  - kd:
+  0.3
+  - n:
+  5
+  - color:
+  255
+
+  object:
+  - name:
+  sphere
+  - center:
+  0 0 10
+  - radius:
+  6
+  - ks:
+  0.2
+  - kd:
+  0.3
+  - n:
+  8
+  - color:
+  16711680
+
+  object:
+  - name:
+  cylinder
+  - center:
+  1 1 0
+  - vec_dir:
+  0 1 0
+  - radius:
+  2
+  - ks:
+  0.2
+  - kd:
+  0.3
+  - n:
+  0.4
+  - color:
+  1232550

@@ -1,33 +1,31 @@
 camera:
   - eye:
-  0 0 -10
+  0.0 0 -10
   - look_at: 
   0 0 0
   - fov:
-  20.0
+  60.0
 
 light:
   - origin:
-  0 0 10
+  0 0 13
   - intensity:
   1
 
   object:
   - name:
-  sphere
+  cylinder
   - center:
   0 0 0
+  - vec_dir:
+  0 1 0
   - radius:
   2
   - ks:
   0.2
   - kd:
-  0.9
+  0.3
   - n:
-  3
+  0.4
   - color:
-  255
-  - rot:
-    on 30.0 60.0 70.0
-  - trans:
-    on 2.4 0 1
+  0

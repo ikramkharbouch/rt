@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_hooks.c                                        :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/05 16:27:13 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/08 16:32:11 by ikrkharb         ###   ########.fr       */
+/*   Created: 2020/01/02 17:26:23 by ikrkharb          #+#    #+#             */
+/*   Updated: 2020/01/02 21:18:10 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/rtv1.h"
+#include "../includes/rtv1.h"
 
 int mouse_press(int button, int x, int y, void *param)
 {

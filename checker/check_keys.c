@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 19:07:50 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/08 16:30:33 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/14 16:37:01 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ int check_sphere_keys(t_block_list *sphere)
 		return (0);
 	if (ft_strcmp(sphere[6].key, "color"))
 		return (0);
+	if (ft_strcmp(sphere[7].key, "rot"))
+		return (0);
+	if (ft_strcmp(sphere[8].key, "trans"))
+		return (0);
 	return (1);
 }
 
@@ -69,6 +73,10 @@ int check_cylinder_keys(t_block_list *cylinder)
 		return (0);
 	if (ft_strcmp(cylinder[7].key, "color"))
 		return (0);
+	if (ft_strcmp(cylinder[8].key, "rot"))
+		return (0);
+	if (ft_strcmp(cylinder[9].key, "trans"))
+		return (0);
 	return (1);
 }
 
@@ -87,6 +95,10 @@ int check_plane_keys(t_block_list *plane)
 	if (ft_strcmp(plane[5].key, "n"))
 		return (0);
 	if (ft_strcmp(plane[6].key, "color"))
+		return (0);
+	if (ft_strcmp(plane[7].key, "rot"))
+		return (0);
+	if (ft_strcmp(plane[8].key, "trans"))
 		return (0);
 	return (1);
 }
@@ -108,6 +120,10 @@ int check_cone_keys(t_block_list *cone)
 	if (ft_strcmp(cone[6].key, "n"))
 		return (0);
 	if (ft_strcmp(cone[7].key, "color"))
+		return (0);
+	if (ft_strcmp(cone[8].key, "rot"))
+		return (0);
+	if (ft_strcmp(cone[9].key, "trans"))
 		return (0);
 	return (1);
 }

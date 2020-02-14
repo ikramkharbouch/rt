@@ -1,0 +1,47 @@
+camera:
+  - eye:
+  0.0 0 10
+  - look_at: 
+  0 0 0
+  - fov:
+  30.0
+
+light:
+  - origin:
+  -10 0 0
+  - intensity:
+  1
+
+  object:
+   - name:
+    cone
+  - center:
+  0 0 0
+  - vec_dir:
+  1 0 0
+  - alpha:
+  30
+  - ks:
+  0.2
+  - kd:
+  0.3
+  - n:
+  0.4
+  - color:
+  680
+
+  object:
+    - name:
+    sphere
+    - center:
+    10 10 5
+    - radius:
+    3
+    - ks:
+    0.5
+    - kd:
+    0.9
+    - n:
+    3
+    - color:
+    25588

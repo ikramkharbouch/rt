@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_gen.c                                          :+:      :+:    :+:   */
+/*   camera->c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/10 15:56:07 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/10 21:25:53 by ikrkharb         ###   ########.fr       */
+/*   Created: 2020/01/02 20:15:26 by ikrkharb          #+#    #+#             */
+/*   Updated: 2020/01/02 23:07:34 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rtv1.h"
 
-float		get_dist(t_point eye, t_point look_at)
+float		get_dist(t_vec eye, t_vec look_at)
 {
 	float 	result;
 	float	a;
@@ -26,48 +26,37 @@ float		get_dist(t_point eye, t_point look_at)
 	return (result);
 }
 
-void        create_camera(void)
+t_camera	ft_create_cam(t_vec eye, t_vec look_at, float fov)
 {
-    t_camera    *camera;
+	t_camera 	camera;
+	t_vec		up;
+	float		dist;
 
-    camera = &(g_env->scene->camera);
-    
-    camera->dist = get_dist(camera->eye, camera->look_at);
-    camera->up = (t_vec){0.0, 1.0, 0.0};
-    camera->fov = DEG_TO_RAD(camera->fov);
-    camera->view_dir = vec_normalize(vec_sub(camera->look_at, camera->eye));
-    camera->u = vec_normalize(vec_cross(camera->view_dir, camera->up));
-    camera->v = vec_normalize(vec_cross(camera->u, camera->view_dir));
-    camera->h_height = tan(camera->fov / 2.0) * 2.0 * camera->dist;
-    camera->aspect_ratio = (float)WIDTH / (float)HEIGHT;
-    camera->h_width = camera->aspect_ratio * camera->h_height;
-    camera->bottom_left = vec_sub(camera->look_at, vec_sum(vec_kscale(camera->h_height, camera->v), vec_kscale(camera->h_width, camera->u)));
-    camera->x_incv = vec_kscale(2.0 * camera->h_width, camera->u);
-    camera->y_incv = vec_kscale(2.0 * camera->h_height, camera->v);
-
-    g_env->scene->camera = *camera;
+	dist 					= get_dist(look_at, eye);
+	up 						= (t_vec){0.0, 1.0, 0.0};
+	camera.fov 				= DEG_TO_RAD(fov);
+	camera.eye 				= eye;
+	camera.look_at			= look_at;
+	camera.view_dir 		= vec_normalize(vec_sub(look_at, eye));
+	//printf("vie (%f, %f, %f)\n",camera.view_dir.x, camera.view_dir.y,camera.view_dir.z);
+	camera.u 				= vec_normalize(vec_cross(camera.view_dir, up));
+	camera.v 				= vec_normalize(vec_cross(camera.u, camera.view_dir));
+	camera.h_height 		= tan(camera.fov / 2.0) * 2.0 * dist;
+	camera.aspect_ratio 	= (float)WIDTH / (float)HEIGHT;
+	camera.h_width 			= camera.aspect_ratio * camera.h_height;
+	camera.bottom_left 		= vec_sub(camera.look_at, vec_sum(vec_kscale(camera.h_height, camera.v), vec_kscale(camera.h_width, camera.u)));
+   	camera.x_incv = vec_kscale(2.0 * camera.h_width, camera.u);
+	camera.y_incv = vec_kscale(2.0 * camera.h_height, camera.v);
+	return (camera);
 }
 
-t_ray       ray_gen(int i, int j)
+t_ray	generate_ray(t_camera *camera, int x, int y)
 {
-    t_ray       ray;
-    t_camera    camera;
-    float   delta_x, delta_y;
-    float   x, y;
+	t_ray ray;
+	t_vec plane_point;
 
-    camera = g_env->scene->camera;
-    ray.origin = camera.eye;
-    delta_x = camera.h_height / HEIGHT;
-    delta_y = camera.h_width / WIDTH;
-    if (i >= 0 && i <= HEIGHT / 2)
-        x = -(camera.h_height / 2) + i * delta_x;
-    if (i > HEIGHT / 2)
-        x = (i - HEIGHT / 2) * delta_x;
-    if (j >= 0 && j <= WIDTH / 2)
-        y = -(camera.h_width / 2) - j * delta_y;
-    if (j > WIDTH / 2)
-        y = -(j - WIDTH / 2) * delta_y;
-    ray.dir = vec_normalize(vec_sum(vec_sum(vec_sum(vec_sum(vec_kscale(x, camera.u), 
-                vec_kscale(y, camera.v)), camera.view_dir), camera.look_at), vec_kscale(-1, ray.origin)));
-    return (ray);
+	ray.origin = camera->eye;
+   	plane_point = vec_sum(camera->bottom_left, vec_sum(vec_kscale((float)x / (float)WIDTH, camera->x_incv), vec_kscale((float)y / (float)HEIGHT, camera->y_incv)));
+   	ray.dir = vec_normalize(vec_sub(plane_point, camera->eye));
+	return (ray);
 }
