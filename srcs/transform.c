@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 19:09:58 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/14 22:59:47 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/15 23:31:02 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_vec		rotate_x_axis(t_vec vec_dir, float angle)
 {
-	// angle = DEG_TO_RAD(angle);
+	angle = DEG_TO_RAD(angle);
 	
 	vec_dir.x = vec_dir.x;
 	vec_dir.y = (vec_dir.y * cos(angle)) - (vec_dir.z * sin(angle));
@@ -25,7 +25,7 @@ t_vec		rotate_x_axis(t_vec vec_dir, float angle)
 
 t_vec		rotate_y_axis(t_vec vec_dir, float angle)
 {
-	// angle = DEG_TO_RAD(angle);
+	angle = DEG_TO_RAD(angle);
 	
 	vec_dir.y = vec_dir.y;
 	vec_dir.z = (vec_dir.z * cos(angle)) - (vec_dir.x * sin(angle));
@@ -36,7 +36,7 @@ t_vec		rotate_y_axis(t_vec vec_dir, float angle)
 
 t_vec		rotate_z_axis(t_vec vec_dir, float angle)
 {
-	// angle = DEG_TO_RAD(angle);
+	angle = DEG_TO_RAD(angle);
 
 	vec_dir.z = vec_dir.z;
 	vec_dir.x = (vec_dir.x * cos(angle)) - (vec_dir.y * sin(angle));

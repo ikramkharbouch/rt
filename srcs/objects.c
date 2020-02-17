@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/03 20:28:39 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/14 23:01:13 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/17 16:02:33 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,37 @@ t_object			*Find_closest(t_camera camera, t_list *objects, int i, int j, t_ray *
 	if (obj1->t == FALSE)
 		return (NULL);
 	return (obj1);
+}
+
+int		shadows(t_ray *ray, t_list *objects,t_list *lights,t_object *obj)
+{
+	t_list			*tmp;
+	t_light			*light;
+	t_point 		p;
+	t_ray			shadow_ray;
+	t_vec			n;
+	
+	light = (t_light *)lights->content;
+	p = vec_sum(ray->origin, vec_kscale(obj->t, ray->dir));
+	shadow_ray.dir = vec_normalize(vec_sub(light->origin, p));
+	n = vec_normalize(vec_sub(obj->center,p));
+	shadow_ray.origin = vec_sum(p, vec_kscale(MIN_D, shadow_ray.dir));
+	tmp = objects;
+	while (tmp)
+	{
+		if (!(ft_strcmp(((t_object*)tmp->content)->name, "sphere")))
+			((t_object*)tmp->content)->tsh = sphere(&shadow_ray,(t_object*)tmp->content);
+		else if (!(ft_strcmp(((t_object*)tmp->content)->name, "plane")))
+			((t_object*)tmp->content)->tsh = plane(&shadow_ray, (t_object*)tmp->content);
+		else if (!(ft_strcmp(((t_object*)tmp->content)->name, "cone")))
+			((t_object*)tmp->content)->tsh = cone(&shadow_ray, (t_object*)tmp->content);
+		else if (!(ft_strcmp(((t_object*)tmp->content)->name, "cylinder")))
+			((t_object*)tmp->content)->tsh = cylinder(&shadow_ray, (t_object*)tmp->content);
+		if (((t_object*)tmp->content)->tsh != FALSE)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
 }
 
 void	draw(t_mlx *mlx, t_camera cam,t_list *objects, t_list *lights)

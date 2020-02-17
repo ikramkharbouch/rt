@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:17:06 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/14 22:47:54 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/17 15:59:55 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define FALSE		-1
 # define NEAR		1e+30
 # define FAR		1e-6
+# define MIN_D		1e-5
 # define CAMERA		6
 # define LIGHT		7
 # define SHAPE		8
@@ -116,6 +117,7 @@ typedef struct 	s_object
 	float 	kd;
 	float 	n;
 	double	t;
+	double 	tsh;
 	t_rot	rot;
 	t_trans	trans;
 } 				t_object;
@@ -207,7 +209,7 @@ float		cylinder(t_ray *ray, t_object *obj);
 
 t_color     *decimal_to_rgb(int color);
 int			colormap(t_color *c);
-int         color_mix(int color, float a);
+int         color_mix(int color, float d, float s);
 int        	phong_model(t_object *obj, t_ray *ray, t_list *lights);
 
 /*

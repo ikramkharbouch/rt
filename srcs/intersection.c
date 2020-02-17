@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 23:00:09 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/12 21:15:08 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/17 15:24:32 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ double		solution(float a, float b, float c)
 
 	if ((b * b - 4 * a * c) < 0)
 		return (FALSE);
+	if ((b * b - 4 * a * c) == 0)
+		return (-b / 2*a);
 	t1 = (-b + sqrt(b * b - 4 * a * c)) / (2 * a);
 	t2 = (-b - sqrt(b * b - 4 * a * c)) / (2 * a);
-	if (t1 > 0.2 && t1 < 1000)
+	if (t1 < t2 && t1 >= 0 && t1 < 1000000)
 		return (t1);
-	if (t2 > 0.2 && t2 < 1000)
+	if (t2 < t1 && t2 >= 0 && t2 < 1000000)
 		return (t2);
 	return(FALSE);
 }
@@ -33,7 +35,7 @@ double		sphere(t_ray *ray, t_object *obj)
 	float a;
 	float b;
 	float c;
-	
+
 	a = vec_dot(ray->dir, ray->dir);
 	b = vec_dot(vec_kscale(2, ray->dir), vec_sub(ray->origin, obj->center));
 	c = vec_dot(vec_sub(ray->origin, obj->center), vec_sub(ray->origin, obj->center)) - obj->radius * obj->radius;
@@ -47,7 +49,7 @@ float	cylinder(t_ray *ray, t_object *obj)
 	float c;
 	t_vec	delta_p;
 
-	obj->center.x = 0; obj->center.y = 0; obj->center.z =20;
+	obj->center.x = 0; obj->center.y = 0; obj->center.z = 0;
 	obj->vec_dir.x = 0 ; obj->vec_dir.y = 1; obj->vec_dir.z = 0;
 	obj->radius = 1.5;
 
@@ -86,7 +88,7 @@ float 		cone(t_ray *ray, t_object *obj)
 	obj->vec_dir.x = 0; obj->vec_dir.y = 1; obj->vec_dir.z = 0;
 	obj->alpha = 30;
 	obj->color = 24523;
-	
+
 	t_vec delta_p = vec_sub(ray->origin, obj->center);
 	v_va = vec_dot(ray->dir, obj->vec_dir);
 	obj->alpha = DEG_TO_RAD(obj->alpha);

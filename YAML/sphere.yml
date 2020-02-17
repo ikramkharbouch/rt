@@ -1,6 +1,6 @@
 camera:
   - eye:
-  0 0 -10
+  0 0 -350
   - look_at: 
   0 0 0
   - fov:
@@ -8,17 +8,23 @@ camera:
 
 light:
   - origin:
-  0 0 10
+    -402 42 42
   - intensity:
   1
+
+  light:
+    - origin:
+      -300 0 0
+    - intensity:
+    0.2
 
   object:
   - name:
   sphere
   - center:
-  0 0 0
+    0 0 0
   - radius:
-  2
+  20
   - ks:
   0.2
   - kd:
@@ -30,4 +36,4 @@ light:
   - rot:
     off 30.0 60.0 70.0
   - trans:
-    on -5 0 3
+    on 42 42 42

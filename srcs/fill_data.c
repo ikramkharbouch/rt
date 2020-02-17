@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 16:29:55 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/14 17:16:16 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/17 16:03:43 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,20 @@ t_list	*Fill_object_data(t_block *block)
 	return (ft_lstnew(&obj, sizeof(t_object)));
 }
 
+void	print_linked_list(t_list *list)
+{
+	t_light	*light;
+	
+	light = NULL;
+	while (list)
+	{
+		light = list->content;
+		printf("light->origin : \t%f\t%f\t%f\n", light->origin.x, light->origin.y, light->origin.z);
+		printf("light->intensity: \t%f\n", light->intensity);
+		list = list->next;
+	}
+}
+
 int Fill(t_parser *p, t_mlx *mlx)
 {
 	t_block 	*block;
@@ -124,6 +138,7 @@ int Fill(t_parser *p, t_mlx *mlx)
 			ft_lstadd(&objects, Fill_object_data(block));
 		i++;
 	}
+	print_linked_list(lights);
 	create_actual_objs(mlx, camera, lights, objects);
 	return (1);
 }
