@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 19:07:50 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/14 16:37:01 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/18 20:10:56 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int check_cylinder_keys(t_block_list *cylinder)
 		return (0);
 	if (ft_strcmp(cylinder[2].key, "vec_dir"))
 		return (0);
-	if (ft_strcmp(cylinder[3].key, "radius"))
+	if (ft_strcmp(cylinder[3].key, "radius") && ft_atof(cylinder[3].value) < 0)
 		return (0);
 	if (ft_strcmp(cylinder[4].key, "ks") || ft_atof(cylinder[4].value) < 0 || ft_atof(cylinder[4].value) > 1)
 		return (0);

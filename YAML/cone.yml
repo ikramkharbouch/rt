@@ -8,40 +8,28 @@ camera:
 
 light:
   - origin:
-  -10 0 0
+  0 0 10
   - intensity:
   1
 
-  object:
-   - name:
+object:
+  - name:
     cone
   - center:
   0 0 0
   - vec_dir:
-  1 0 0
+  0 1 0
   - alpha:
   30
   - ks:
-  0.2
+  1
   - kd:
-  0.3
+  1
   - n:
-  0.4
+  1
   - color:
-  680
-
-  object:
-    - name:
-    sphere
-    - center:
-    10 10 5
-    - radius:
-    3
-    - ks:
-    0.5
-    - kd:
-    0.9
-    - n:
-    3
-    - color:
-    25588
+    255
+  - rot:
+    off 40 40 40
+  - trans:
+    off 42 42 42

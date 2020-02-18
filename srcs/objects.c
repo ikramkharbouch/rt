@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/03 20:28:39 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/17 16:02:33 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/18 21:00:57 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	draw(t_mlx *mlx, t_camera cam,t_list *objects, t_list *lights)
 	int			j;
 	t_object	*obj;
 	t_ray 		ray;
+	(void)lights;
 
 	i = 0;
 	while (i < WIDTH)
@@ -93,7 +94,7 @@ void	draw(t_mlx *mlx, t_camera cam,t_list *objects, t_list *lights)
 			j++;
 			if (obj == NULL)
 				continue ;
-			ft_mlx_pixel_put(mlx, i, HEIGHT - j - 1, phong_model(obj, &ray, lights));
+			ft_mlx_pixel_put(mlx, i, j, phong_model(obj, &ray, lights));
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 #    By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/02 20:53:05 by ikrkharb          #+#    #+#              #
-#    Updated: 2020/02/14 19:34:30 by ikrkharb         ###   ########.fr        #
+#    Updated: 2020/02/18 18:18:20 by ikrkharb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ FLAGS = -Wall -Werror -Wextra
 SRCS = 	srcs/ray_gen.c\
 		srcs/fill_data.c\
 		srcs/hooks.c\
-		srcs/parser.c\
+		srcs/parsing.c\
 		srcs/rtv1.c\
 		srcs/vectors_ops.c\
 		DEBUG/debug.c\
@@ -29,6 +29,11 @@ SRCS = 	srcs/ray_gen.c\
 		checker/checker.c\
 		checker/check_keys.c\
 		srcs/transform.c\
+		srcs/init_env.c\
+		srcs/mlx.c\
+		srcs/parsing_utils.c\
+		srcs/rotate_axes.c\
+		srcs/vec_scaling.c
 
 LIBFT = libft/libft.a
 

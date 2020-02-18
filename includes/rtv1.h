@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:17:06 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/17 15:59:55 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/18 21:00:47 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define NEAR		1e+30
 # define FAR		1e-6
 # define MIN_D		1e-5
+
 # define CAMERA		6
 # define LIGHT		7
 # define SHAPE		8
@@ -49,6 +50,9 @@
 # define CONE		25
 # define ROT		26
 # define TRANS		27
+# define ALPHA		28
+# define VEC_DIR	29
+
 #define DEG_TO_RAD(X) (X * (M_PI / 180.0));
 
 typedef struct s_point
@@ -120,6 +124,8 @@ typedef struct 	s_object
 	double 	tsh;
 	t_rot	rot;
 	t_trans	trans;
+	float	k;
+	
 } 				t_object;
 
 typedef struct s_light
@@ -150,96 +156,140 @@ typedef struct s_color
     unsigned char g;
 }               t_color;
 
-void 	ft_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
-int 	mouse_press(int button, int x, int y, void *param);
-int 	key_press(int keycode, void *param);
-int 	close_win(void *param);
-void	ft_mlx_window(t_mlx *mlx);
+typedef struct s_env
+{
+	t_mlx		mlx;
+	t_scene		scene;
+}				t_env;
 
-void 	camera_setup(t_camera *camera);
-t_ray 	generate_ray(t_camera *camera, int i, int j);
-void	debug_camera(t_list *camera);
-void	debug_rot(t_rot *rot);
-void	debug_trans(t_trans *trans);
+t_env g_env;
 
-float 	vec_dot(t_vec v1, t_vec v2);
-float 	vec_dot_x_z(t_vec v1, t_vec v2);
-t_vec 	vec_sub(t_vec v1, t_vec v2);
-t_vec 	vec_sum(t_vec v1, t_vec v2);
-t_vec 	vec_scale(t_vec v1, t_vec v2);
-t_vec 	vec_kscale(float k, t_vec v2);
-t_vec 	vec_cross(t_vec v1, t_vec v2);
-t_vec 	vec_normalize(t_vec v);
-t_vec 	vec_kdiv(t_vec v, float k);
 
-/* TO DELETE */
-void 	print_obj_props(t_block *block);
-void 	print_light_props(t_light *light);
-void 	read_object_values(int fd, t_block *block);
-void 	read_light_values(int fd, t_light *light);
-void 	print_cam_props(t_camera *camera);
+/*
+** MLX SETUP
+*/
 
-void print_cam_props(t_camera *camera);
-void print_light_props(t_light *light);
+void 		ft_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
+int 		mouse_press(int button, int x, int y, void *param);
+int 		key_press(int keycode, void *param);
+int 		close_win(void *param);
+void 		ft_draw(t_mlx *mlx);
+void		set_mlx_hooks(t_mlx *mlx);
+void 		ft_mlx_setup(t_mlx *mlx);
+
+/*
+** Vectors operations
+*/
+
+float 		vec_dot(t_vec v1, t_vec v2);
+float 		vec_dot_x_z(t_vec v1, t_vec v2);
+t_vec 		vec_sub(t_vec v1, t_vec v2);
+t_vec 		vec_sum(t_vec v1, t_vec v2);
+t_vec 		vec_scale(t_vec v1, t_vec v2);
+t_vec 		vec_kscale(float k, t_vec v2);
+t_vec 		vec_cross(t_vec v1, t_vec v2);
+t_vec 		vec_normalize(t_vec v);
+
+/*
+** For debugging purposes (To delete later)
+*/
+
+void 		print_obj_props(t_block *block);
+void 		print_light_props(t_light *light);
+void 		read_object_values(int fd, t_block *block);
+void 		read_light_values(int fd, t_light *light);
+void 		print_cam_props(t_camera *camera);
+void 		print_cam_props(t_camera *camera);
+void 		print_light_props(t_light *light);
+void 		print_list_objects(t_list *list);
+void 		print_list_objects(t_list *list);
+void 		print_list_lights(t_list *list);
+void		debug_camera(t_list *camera);
+void		debug_rot(t_rot *rot);
+void		debug_trans(t_trans *trans);
+
 /**/
+
+/*
+** Init env blocks
+*/
 
 void 		init_cam(t_camera *camera);
 void 		init_light(t_light *light);
 void 		init_obj(t_object *obj);
 void		init_rot(t_rot *rot);
 void		init_trans(t_trans *trans);
-int 		get_data(char *filename, t_mlx *mlx);
-t_vec 		char_to_vec(char *str);
 
-t_list			*Fill_object_data(t_block *block);
-t_camera		Fill_camera_data(t_block *block);
-t_list			*Fill_light_data(t_block *block);
-int 			Fill(t_parser *p, t_mlx *mlx);
+/*
+** Data manipulation
+*/
+int			get_data(char *filename, t_mlx *mlx);
+t_list		*fill_object_data(t_block *block);
+t_camera	fill_camera_data(t_block *block);
+t_list		*fill_light_data(t_block *block);
+int			fill(t_parser *p, t_mlx *mlx);
+
+/*
+** Camera and ray generating
+*/
 
 t_camera	ft_create_cam(t_vec eye, t_vec look_at, float fov);
+t_ray 		generate_ray(t_camera *camera, int i, int j);
 void		ft_draw_objects(t_mlx *mlx, t_camera camera, t_list *objects);
-
 void		create_actual_objs(t_mlx *mlx, t_camera camera, t_list *lights,t_list *objects);
-t_object 	*find_inter(t_camera camera, t_list *objects, int i, int j);
 
+/*
+** Object's intersections
+*/
+
+t_object 	*find_inter(t_camera camera, t_list *objects, int i, int j);
 double		sphere(t_ray *ray, t_object *obj);
 float		plane(t_ray *ray, t_object *obj);
 float 		cone(t_ray *ray, t_object *obj);
 float		cylinder(t_ray *ray, t_object *obj);
 
-t_color     *decimal_to_rgb(int color);
-int			colormap(t_color *c);
-int         color_mix(int color, float d, float s);
+/*
+** Shading and phong model coloring
+*/
+
+int			color_mix(int color, float d, float s);
 int        	phong_model(t_object *obj, t_ray *ray, t_list *lights);
 
 /*
 ** Utils
 */
-int		find_block(t_block *block);
-int		find_camera_key(char *key);
-int		find_light_key(char *key);
-int		find_object_key(char *key);
-int		find_object_name(char *name);
-t_rot	char_to_rot(char *str);
-t_trans	char_to_trans(char *str);
+
+int			find_block(t_block *block);
+int			find_camera_key(char *key);
+int			find_light_key(char *key);
+int			find_object_key(char *key);
+int			find_object_name(char *name);
+t_vec 		char_to_vec(char *str);
+t_rot		char_to_rot(char *str);
+t_trans		char_to_trans(char *str);
 
 /*
 ** The checker functions
 */
-int 	check_cam_keys(t_block_list *list);
-int 	check_light_keys(t_block_list *list);
-int 	check_sphere_keys(t_block_list *sphere);
-int 	check_cylinder_keys(t_block_list *cylinder);
-int 	check_plane_keys(t_block_list *plane);
-int 	check_cone_keys(t_block_list *cone);
-int 	check_shape_keys(t_block_list *list);
-int		check(t_parser *p);
+
+int 		check_cam_keys(t_block_list *list);
+int 		check_light_keys(t_block_list *list);
+int 		check_sphere_keys(t_block_list *sphere);
+int 		check_cylinder_keys(t_block_list *cylinder);
+int 		check_plane_keys(t_block_list *plane);
+int 		check_cone_keys(t_block_list *cone);
+int 		check_shape_keys(t_block_list *list);
+int			check(t_parser *p);
 
 
 /*
 ** Transformation of objects
 */
+
 void		rotate(t_list **objects);
 void		translate(t_list **objects);
+t_vec		rotate_x_axis(t_vec vec_dir, float angle);
+t_vec		rotate_y_axis(t_vec vec_dir, float angle);
+t_vec		rotate_z_axis(t_vec vec_dir, float angle);
 
 #endif

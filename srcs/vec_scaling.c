@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   vec_scaling.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/18 18:02:02 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/18 18:02:50 by ikrkharb         ###   ########.fr       */
+/*   Created: 2020/02/18 18:17:49 by ikrkharb          #+#    #+#             */
+/*   Updated: 2020/02/18 18:21:14 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rtv1.h"
 
-int	color_mix(int color, float d, float s)
+t_vec	vec_scale(t_vec v1, t_vec v2)
 {
-	unsigned char *tab;
+	return ((t_vec){v1.x * v2.x, v1.y * v2.y, v1.z * v2.z});
+}
 
-	tab = (unsigned char *)&color;
-	tab[0] = (tab[0] + (255 - tab[0]) * s) * d;
-	tab[1] = (tab[1] + (255 - tab[1]) * s) * d;
-	tab[2] = (tab[2] + (255 - tab[2]) * s) * d;
-	return (color);
+t_vec	vec_kscale(float k, t_vec v2)
+{
+	return ((t_vec){k * v2.x, k * v2.y, k * v2.z});
 }

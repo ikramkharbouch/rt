@@ -9,6 +9,7 @@
         "sstream": "cpp",
         "functional": "cpp",
         "hashtable": "cpp",
-        "typeinfo": "c"
+        "typeinfo": "c",
+        "rtv1.h": "c"
     }
 }

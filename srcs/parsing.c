@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/18 18:02:02 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/18 18:02:50 by ikrkharb         ###   ########.fr       */
+/*   Created: 2020/01/01 19:40:41 by ikrkharb          #+#    #+#             */
+/*   Updated: 2020/02/18 18:25:27 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rtv1.h"
 
-int	color_mix(int color, float d, float s)
+int		get_data(char *filename, t_mlx *mlx)
 {
-	unsigned char *tab;
+	t_parser	*p;
 
-	tab = (unsigned char *)&color;
-	tab[0] = (tab[0] + (255 - tab[0]) * s) * d;
-	tab[1] = (tab[1] + (255 - tab[1]) * s) * d;
-	tab[2] = (tab[2] + (255 - tab[2]) * s) * d;
-	return (color);
+	if (!(p = parse(filename)))
+		return (0);
+	if (!check(p))
+		return (0);
+	fill(p, mlx); // Fill in the structs
+	free_parser(&p);
+	return (1);
 }

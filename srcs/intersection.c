@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 23:00:09 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/17 15:24:32 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/18 20:03:39 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,21 +79,17 @@ float	plane(t_ray *ray, t_object *obj)
 
 float 		cone(t_ray *ray, t_object *obj)
 {
-	float a;
-	float b;
-	float c;
-	float v_va;
-
-	obj->center.x = 0; obj->center.y = 0; obj->center.z = 0;
-	obj->vec_dir.x = 0; obj->vec_dir.y = 1; obj->vec_dir.z = 0;
-	obj->alpha = 30;
-	obj->color = 24523;
+	float 	a;
+	float 	b;
+	float 	c;
+	float 	v_va;
+	float	alpha;
 
 	t_vec delta_p = vec_sub(ray->origin, obj->center);
 	v_va = vec_dot(ray->dir, obj->vec_dir);
-	obj->alpha = DEG_TO_RAD(obj->alpha);
-	a = pow(cos(obj->alpha), 2) * vec_dot(vec_sub(ray->dir, vec_kscale(v_va,obj->vec_dir)), vec_sub( ray->dir, vec_kscale(v_va,obj->vec_dir))) - pow(sin(obj->alpha),2) * v_va * v_va;
-	b = 2 * pow(cos(obj->alpha), 2) * vec_dot(vec_sub(ray->dir, vec_kscale(v_va,obj->vec_dir)), vec_sub(delta_p, vec_kscale(vec_dot(delta_p,obj->vec_dir),obj->vec_dir))) - 2 * pow(sin(obj->alpha),2) * v_va * vec_dot(delta_p,obj->vec_dir);
-	c = pow(cos(obj->alpha), 2) * vec_dot(vec_sub(delta_p, vec_kscale(vec_dot(delta_p,obj->vec_dir),obj->vec_dir)), vec_sub(delta_p, vec_kscale(vec_dot(delta_p,obj->vec_dir),obj->vec_dir))) - pow(sin(obj->alpha),2) * pow(vec_dot(delta_p,obj->vec_dir), 2);
+	alpha = DEG_TO_RAD(obj->alpha);
+	a = pow(cos(alpha), 2) * vec_dot(vec_sub(ray->dir, vec_kscale(v_va,obj->vec_dir)), vec_sub( ray->dir, vec_kscale(v_va,obj->vec_dir))) - pow(sin(alpha),2) * v_va * v_va;
+	b = 2 * pow(cos(alpha), 2) * vec_dot(vec_sub(ray->dir, vec_kscale(v_va,obj->vec_dir)), vec_sub(delta_p, vec_kscale(vec_dot(delta_p,obj->vec_dir),obj->vec_dir))) - 2 * pow(sin(alpha),2) * v_va * vec_dot(delta_p,obj->vec_dir);
+	c = pow(cos(alpha), 2) * vec_dot(vec_sub(delta_p, vec_kscale(vec_dot(delta_p,obj->vec_dir),obj->vec_dir)), vec_sub(delta_p, vec_kscale(vec_dot(delta_p,obj->vec_dir),obj->vec_dir))) - pow(sin(alpha),2) * pow(vec_dot(delta_p,obj->vec_dir), 2);
 	return (solution(a, b, c));
 }

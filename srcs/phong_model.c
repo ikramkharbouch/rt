@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   phong_model.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/18 20:59:11 by ikrkharb          #+#    #+#             */
+/*   Updated: 2020/02/18 20:59:57 by ikrkharb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/rtv1.h"
 
 t_vec sphere_normal(t_object *obj, t_ray *ray)
@@ -33,6 +45,9 @@ t_vec   cylinder_normal(t_object *obj, t_ray *ray)
     t_vec   n;
     t_point i;
 
+    /*
+    ** Intersection point
+    */
     i = vec_sum(ray->origin, vec_kscale(obj->t, ray->dir));
     n = vec_normalize(vec_sub(vec_sub(i, obj->center), vec_kscale(vec_dot(obj->vec_dir, vec_sub(i, obj->center)), obj->vec_dir)));
     return (n);

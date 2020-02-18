@@ -1,20 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   init_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/01 19:40:41 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/14 19:31:35 by ikrkharb         ###   ########.fr       */
+/*   Created: 2020/02/18 16:49:21 by ikrkharb          #+#    #+#             */
+/*   Updated: 2020/02/18 18:01:44 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rtv1.h"
-
-/*
-** Parse object is not done yet
-*/
 
 void	init_cam(t_camera *camera)
 {
@@ -53,17 +49,4 @@ void	init_trans(t_trans *trans)
 {
 	trans->on = 0;
 	trans->vec = (t_vec){0.0, 0.0, 0.0};
-}
-
-int		get_data(char *filename, t_mlx *mlx)
-{
-	t_parser	*p;
-
-	if (!(p = parse(filename)))
-		return (0);
-	if (!check(p))
-		return (0);
-	Fill(p, mlx); // Fill in the structs
-	free_parser(&p);
-	return (1);
 }

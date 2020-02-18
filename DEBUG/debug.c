@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 16:41:24 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/14 19:31:07 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/18 19:50:16 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,4 +115,38 @@ void	debug_trans(t_trans *trans)
 {
 	printf("%d\n", trans->on);
 	printf("%f %f %f\n", trans->vec.x, trans->vec.y, trans->vec.z);
+}
+
+void print_list_lights(t_list *list)
+{
+	t_light *light;
+
+	light = NULL;
+	while (list)
+	{
+		light = list->content;
+		printf("light->origin : \t%f\t%f\t%f\n", light->origin.x, light->origin.y, light->origin.z);
+		printf("light->intensity: \t%f\n", light->intensity);
+		list = list->next;
+	}
+}
+
+void print_list_objects(t_list *list)
+{
+	t_object *object;
+
+	object = NULL;
+	while (list)
+	{
+		object = list->content;
+		printf("object->name: %s\n", object->name);
+		printf("\tobject->center: %f %f %f\n", object->center.x, object->center.y, object->center.z);
+		printf("\tobject->vec_dir: %f %f %f\n", object->vec_dir.x, object->vec_dir.y, object->vec_dir.z);
+		printf("\tobject->alpha: %f\n", object->alpha);
+		printf("\tobject->n: %f\n", object->n);
+		printf("\tobject->ks: %f\n", object->ks);
+		printf("\tobject->kd: %f\n", object->kd);
+		printf("\tobject->color: %d\n", object->color);
+		list = list->next;
+	}
 }

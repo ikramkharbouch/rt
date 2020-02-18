@@ -6,13 +6,13 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:26:23 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/01/02 21:18:10 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/18 18:04:03 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rtv1.h"
 
-int mouse_press(int button, int x, int y, void *param)
+int	mouse_press(int button, int x, int y, void *param)
 {
 	t_mlx *mlx;
 
@@ -22,7 +22,7 @@ int mouse_press(int button, int x, int y, void *param)
 	return (0);
 }
 
-int key_press(int keycode, void *param)
+int	key_press(int keycode, void *param)
 {
 	t_mlx *mlx;
 
@@ -35,7 +35,7 @@ int key_press(int keycode, void *param)
 	return (0);
 }
 
-int close_win(void *param)
+int	close_win(void *param)
 {
 	t_mlx *mlx;
 
