@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/03 20:28:39 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/19 01:31:27 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/19 15:58:32 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_object			*Find_closest(t_camera camera, t_list *objects, int i, int j, t_ray *
 	
 	camera = ft_create_cam(camera.eye, camera.look_at, camera.fov);
 	*ray = generate_ray(&camera, i, j);
-	// translate(&objects);
 	tmp = objects;
 	r_obj = NULL;
 	t_tmp = 1e30;

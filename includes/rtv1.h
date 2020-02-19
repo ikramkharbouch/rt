@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:17:06 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/19 01:30:38 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/19 17:48:52 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -287,7 +287,7 @@ int			check(t_parser *p);
 */
 
 void		rotate(t_list **objects);
-void		translate(t_list **objects);
+void		translate(t_list *objects);
 t_vec		rotate_x_axis(t_vec vec_dir, float angle);
 t_vec		rotate_y_axis(t_vec vec_dir, float angle);
 t_vec		rotate_z_axis(t_vec vec_dir, float angle);

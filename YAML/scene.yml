@@ -20,7 +20,7 @@ object:
     - vec_dir:
     0 1 0
     - radius:
-    1
+    0.2
     - ks:
     0.2
     - kd:
@@ -38,7 +38,7 @@ object:
             - name:
                 sphere
             - center:
-                0 0 0
+                5 0 0
             - radius:
                 0.5
             - ks:

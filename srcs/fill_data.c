@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 16:29:55 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/18 22:30:58 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/19 17:11:33 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,6 @@ t_list *fill_object_data(t_block *block)
 			obj.trans = char_to_trans(list[i].value);
 		i++;
 	}
-	debug_rot(&(obj.rot));
-	debug_trans(&(obj.trans));
 	return (ft_lstnew(&obj, sizeof(t_object)));
 }
 
@@ -128,6 +126,7 @@ int fill(t_parser *p, t_mlx *mlx)
 			ft_lstadd(&objects, fill_object_data(block));
 		i++;
 	}
+	// translate(objects);
 	print_list_objects(objects);
 	create_actual_objs(mlx, camera, lights, objects);
 	return (1);

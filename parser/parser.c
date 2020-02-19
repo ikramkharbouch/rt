@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 21:33:14 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/07 18:43:15 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/19 17:40:57 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int			parse_block(t_block *block, int fd)
 
 	list = 0;
 	block->n = 0;
+	init_keys(block->list);
 	while (get_next_line(fd, &line) == 1)
 	{
 		type = get_type(line);
@@ -100,7 +101,7 @@ t_parser 	*parse(char *filename)
 
 void		pretty_parser(t_parser *p)
 {
-	t_block		*block;
+	t_block			*block;
 	t_block_list	*list;
 	int				i;
 	int				j;

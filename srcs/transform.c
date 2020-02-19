@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 19:09:58 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/18 23:49:25 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/19 16:48:01 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,15 @@ void		rotate(t_list **objects)
 	}
 }
 
-void		translate(t_list **objects)
+void		translate(t_list *objects)
 {
 	t_list		*tmp;
 	t_object	*object;
-
-	tmp = *objects;
-	while (tmp)
+	
+	tmp = objects;
+	while (objects)
 	{
-		object = tmp->content;
+		object = objects->content;
 		if (object->trans.on)
 		{
 			object->center.x += object->trans.vec.x;
@@ -54,6 +54,7 @@ void		translate(t_list **objects)
 			object->center.z += object->trans.vec.z;
 		}
 		tmp->content = object;
-		tmp = tmp->next;
+		objects = objects->next;
 	}
+	objects = tmp;
 }

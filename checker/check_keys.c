@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 19:07:50 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/19 01:42:22 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/19 17:48:59 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,27 +103,41 @@ int check_plane_keys(t_block_list *plane)
 	return (1);
 }
 
+int check_empty_keys(t_block_list *list, int size)
+{
+	int i;
+
+	i = 0;
+	while (i < size)
+	{
+		if (list[i].key == '\0')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int check_cone_keys(t_block_list *cone)
 {
-	if (ft_strcmp(cone[0].key, "name"))
+	if ((ft_strcmp(cone[0].key, "name")))
 		return (0);
-	if (ft_strcmp(cone[1].key, "center"))
+	if ((ft_strcmp(cone[1].key, "center")))
 		return (0);
-	if (ft_strcmp(cone[2].key, "vec_dir"))
+	if ((ft_strcmp(cone[2].key, "vec_dir")))
 		return (0);
-	if (ft_strcmp(cone[3].key, "alpha"))
+	if ((ft_strcmp(cone[3].key, "alpha")))
 		return (0);
-	if (ft_strcmp(cone[4].key, "ks") || ft_atof(cone[4].value) < 0 || ft_atof(cone[4].value) > 1)
+	if ((ft_strcmp(cone[4].key, "ks")) || ft_atof(cone[4].value) < 0 || ft_atof(cone[4].value) > 1)
 		return (0);
-	if (ft_strcmp(cone[5].key, "kd") || ft_atof(cone[5].value) < 0 || ft_atof(cone[5].value) > 1)
+	if ((ft_strcmp(cone[5].key, "kd")) || ft_atof(cone[5].value) < 0 || ft_atof(cone[5].value) > 1)
 		return (0);
-	if (ft_strcmp(cone[6].key, "n"))
+	if ((ft_strcmp(cone[6].key, "n")))
 		return (0);
-	if (ft_strcmp(cone[7].key, "color"))
+	if ((ft_strcmp(cone[7].key, "color")))
 		return (0);
-	if (ft_strcmp(cone[8].key, "rot"))
+	if ((ft_strcmp(cone[8].key, "rot")))
 		return (0);
-	if (ft_strcmp(cone[9].key, "trans"))
+	if ((ft_strcmp(cone[9].key, "trans")))
 		return (0);
 	return (1);
 }

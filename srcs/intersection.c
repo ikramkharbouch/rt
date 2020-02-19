@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 23:00:09 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/19 01:30:27 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/19 16:01:58 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,11 @@ double		solution(float a, float b, float c, double *t)
 	if (t1 < t2 && t1 >= 0 && t1 < FAR)
 	{
 		*t = t1;
-		printf("%f\n", *t);
 		return (1);
 	}
 	if (t2 < t1 && t2 >= 0 && t2 < 1000000)
 	{
 		*t = t2;
-		printf("%f\n", *t);
 		return (1);
 	}
 	return(FALSE);
