@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 21:05:55 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/19 17:40:44 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/20 00:21:09 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int					is_block(char *str);
 int					is_list(char *str);
 char				*pretty_name(char *str);
 int					get_type(char *str);
+void    			init_values(t_block_list *list);
 
 void    			init_keys(t_block_list *list);
 

@@ -6,7 +6,7 @@
 #    By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/02 20:53:05 by ikrkharb          #+#    #+#              #
-#    Updated: 2020/02/18 22:15:32 by ikrkharb         ###   ########.fr        #
+#    Updated: 2020/02/19 23:20:38 by ikrkharb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,12 +28,13 @@ SRCS = 	srcs/ray_gen.c\
 		srcs/phong_model.c\
 		checker/checker.c\
 		checker/check_keys.c\
+		checker/checker_utils.c\
 		srcs/transform.c\
 		srcs/init_env.c\
 		srcs/mlx.c\
 		srcs/parsing_utils.c\
 		srcs/rotate_axes.c\
-		srcs/vec_scaling.c
+		srcs/vec_scaling.c\
 
 LIBFT = libft/libft.a
 

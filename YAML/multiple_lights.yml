@@ -1,0 +1,107 @@
+camera:
+ - eye:
+  0 0 -40
+  -look_at:
+     0 0 0
+ - fov:
+					60.0
+ 
+object:
+ - name:
+ plane
+ - center:
+0 0 -40
+ - vec_dir:
+ 90 0 0 
+ - ks:
+   1
+  - kd:
+   1
+   - n:
+   30
+  - color:
+     170
+  - rot:
+  off 30.0 60.0 70.0
+  - trans:
+  off 42 42 42
+
+  object:
+   - name:
+   plane
+   - center:
+  0 -30 0
+   - vec_dir:
+   0 0 0 
+   - ks:
+     1
+    - kd:
+     1
+     - n:
+     30
+    - color:
+     7829367
+    - rot:
+    off 30.0 60.0 70.0
+    - trans:
+    off 42 42 42
+ 
+    object:
+     - name:
+     plane
+     - center:
+    0 30 0
+     - vec_dir:
+     0 0 0 
+     - ks:
+       1
+      - kd:
+       1
+       - n:
+       30
+      - color:
+       7829367
+      - rot:
+      off 30.0 60.0 70.0
+      - trans:
+      off 42 42 42
+
+object:
+	- name:
+	 sphere
+	 - center:
+	 2 0 0
+	- radius:
+	   1
+	- ks:
+	  1
+	- kd:
+	   1
+	- n:
+	   30
+	- color:
+	   255
+	- rot:
+	   off 30.0 60.0 70.0
+	 - trans:
+	   off 42 42 42
+
+object:
+		- name:
+		 sphere
+		 - center:
+		 2 0 0
+		- radius:
+		   1
+		- ks:
+		  1
+		- kd:
+		   1
+		- n:
+		   30
+		- color:
+		   255
+		- rot:
+		   off 30.0 60.0 70.0
+		 - trans:
+		   off 42 42 42

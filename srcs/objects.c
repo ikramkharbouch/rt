@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/03 20:28:39 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/19 15:58:32 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/19 21:44:32 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,40 +57,6 @@ t_object			*Find_closest(t_camera camera, t_list *objects, int i, int j, t_ray *
 	return (r_obj);
 }
 
-/*t_object			*Find_closest(t_camera camera, t_list *objects, int i, int j, t_ray *ray)
-{
-	t_object		*obj1;
-	t_list			*tmp;
-
-	camera = ft_create_cam(camera.eye, camera.look_at, camera.fov);
-	*ray = generate_ray(&camera, i, j);
-	rotate(&objects);
-	translate(&objects);
-	tmp = objects;
-	((t_object *)tmp->content)->t = FALSE;
-	while (tmp)
-	{
-		obj1 = (t_object *)(tmp->content);
-		if (!(ft_strcmp(((t_object*)tmp->content)->name, "sphere")))
-			((t_object*)tmp->content)->t = sphere(ray,(t_object*)tmp->content);
-		else if (!(ft_strcmp(((t_object*)tmp->content)->name, "plane")))
-			((t_object*)tmp->content)->t = plane(ray, (t_object*)tmp->content);
-		else if (!(ft_strcmp(((t_object*)tmp->content)->name, "cone")))
-			((t_object*)tmp->content)->t = cone(ray, (t_object*)tmp->content);
-		else if (!(ft_strcmp(((t_object*)tmp->content)->name, "cylinder")))
-			((t_object*)tmp->content)->t = cylinder(ray, (t_object*)tmp->content);
-		else
-			((t_object *)tmp->content)->t = FALSE;
-		if (((t_object*)tmp->content)->t * 10000 < obj1->t * 10000)
-			obj1 = (t_object *)tmp->content;
-		tmp = tmp->next;
-
-	}
-	if (obj1->t == FALSE)
-		return (NULL);
-	return (obj1);
-}*/
-
 int		shadows(t_ray *ray, t_list *objects,t_list *lights,t_object *obj)
 {
 	t_list			*tmp;
@@ -138,11 +104,11 @@ void	draw(t_mlx *mlx, t_camera cam,t_list *objects, t_list *lights)
 			obj = Find_closest(cam, objects, i, j, &ray);
 			if (obj == NULL)
 			{	
-				ft_mlx_pixel_put(mlx, i, j,0x00019);
+				ft_mlx_pixel_put(mlx, i, j, 0);
 				continue ;
 			}
 			obj->k = shadows(&ray, objects, lights, obj);
-			ft_mlx_pixel_put(mlx, i, j, obj->k * phong_model(obj, &ray, lights));
+			ft_mlx_pixel_put(mlx, i, j, phong_model(obj, &ray, lights));
 		}
 	}
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img_ptr, 0, 0);

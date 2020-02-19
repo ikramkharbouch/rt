@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:17:06 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/19 17:48:52 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/19 23:26:59 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 # define HEIGHT 	800
 # define WIDTH  	800
-# define FALSE		-1
+# define FALSE		1000000
 # define NEAR		1e-6
 # define FAR		1e+30
 # define MIN_D		1e-5
@@ -280,7 +280,10 @@ int 		check_plane_keys(t_block_list *plane);
 int 		check_cone_keys(t_block_list *cone);
 int 		check_shape_keys(t_block_list *list);
 int			check(t_parser *p);
-
+int			check_vec_values(char *vec);
+int 		check_empty_keys(t_block_list *list, int size);
+int 		check_empty_values(t_block_list *list, int size);
+int 		len(t_block_list *list);
 
 /*
 ** Transformation of objects

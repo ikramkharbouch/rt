@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 23:00:09 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/19 16:01:58 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/19 20:53:44 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,12 @@ double		sphere(t_ray *ray, t_object *obj, double *t)
 	return (solution(a, b, c, t));
 }
 
-double	cylinder(t_ray *ray, t_object *obj, double *t)
+double		cylinder(t_ray *ray, t_object *obj, double *t)
 {
 	float a;
 	float b;
 	float c;
 	t_vec	delta_p;
-
-	obj->center.x = 0; obj->center.y = 0; obj->center.z = 0;
-	obj->vec_dir.x = 0 ; obj->vec_dir.y = 1; obj->vec_dir.z = 0;
-	obj->radius = 1.5;
 
 	delta_p = vec_sub(ray->origin, obj->center);
 	a = vec_dot(vec_sub(ray->dir, vec_kscale(vec_dot(ray->dir, obj->vec_dir), obj->vec_dir)),vec_sub(ray->dir, vec_kscale(vec_dot(ray->dir, obj->vec_dir), obj->vec_dir)));
@@ -66,7 +62,7 @@ double	cylinder(t_ray *ray, t_object *obj, double *t)
 	return (solution(a, b, c, t));
 }
 
-double	plane(t_ray *ray, t_object *obj, double *t)
+double		plane(t_ray *ray, t_object *obj, double *t)
 {
 	t_vec p0l0;
 	float	t1;

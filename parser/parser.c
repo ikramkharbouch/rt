@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 21:33:14 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/19 17:40:57 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/20 00:22:17 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int			parse_block(t_block *block, int fd)
 	list = 0;
 	block->n = 0;
 	init_keys(block->list);
+	init_values(block->list);
 	while (get_next_line(fd, &line) == 1)
 	{
 		type = get_type(line);
