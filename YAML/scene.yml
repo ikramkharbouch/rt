@@ -1,0 +1,75 @@
+camera:
+    - eye:
+    0.0 0 -10
+    - look_at: 
+    0 0 0
+    - fov:
+    20.0
+
+light:
+    - origin:
+    0 0 -10
+    - intensity:
+    1
+
+object:
+    - name:
+    cylinder
+    - center:
+    5 0 0
+    - vec_dir:
+    0 1 0
+    - radius:
+    1
+    - ks:
+    0.2
+    - kd:
+    0.3
+    - n:
+    60
+    - color:
+    255
+    - rot:
+        off 30.0 60.0 70.0
+    - trans:
+        on 42 42 42
+
+        object:
+            - name:
+                sphere
+            - center:
+                0 0 0
+            - radius:
+                0.5
+            - ks:
+                1
+            - kd:
+                1
+            - n:
+                30
+            - color:
+                255
+            - rot:
+                off 30.0 60.0 70.0
+            - trans:
+                on 42 42 42
+            
+            object:
+                - name:
+                    sphere
+                - center:
+                -2 0 0
+                - radius:
+                    0.5
+                - ks:
+                   1
+                - kd:
+                    1
+                - n:
+                    30
+                - color:
+                    255
+                - rot:
+                    off 30.0 60.0 70.0
+                - trans:
+                    on 42 42 42

@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 19:09:58 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/18 18:09:02 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/18 23:49:25 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,11 @@ void		translate(t_list **objects)
 	{
 		object = tmp->content;
 		if (object->trans.on)
-			object->center = object->trans.vec;
+		{
+			object->center.x += object->trans.vec.x;
+			object->center.y += object->trans.vec.y;
+			object->center.z += object->trans.vec.z;
+		}
 		tmp->content = object;
 		tmp = tmp->next;
 	}

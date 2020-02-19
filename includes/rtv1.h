@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:17:06 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/18 21:00:47 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/19 01:30:38 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # define HEIGHT 	800
 # define WIDTH  	800
 # define FALSE		-1
-# define NEAR		1e+30
-# define FAR		1e-6
+# define NEAR		1e-6
+# define FAR		1e+30
 # define MIN_D		1e-5
 
 # define CAMERA		6
@@ -243,10 +243,10 @@ void		create_actual_objs(t_mlx *mlx, t_camera camera, t_list *lights,t_list *obj
 */
 
 t_object 	*find_inter(t_camera camera, t_list *objects, int i, int j);
-double		sphere(t_ray *ray, t_object *obj);
-float		plane(t_ray *ray, t_object *obj);
-float 		cone(t_ray *ray, t_object *obj);
-float		cylinder(t_ray *ray, t_object *obj);
+double		sphere(t_ray *ray, t_object *obj, double *t);
+double		plane(t_ray *ray, t_object *obj, double *t);
+double 		cone(t_ray *ray, t_object *obj, double *t);
+double		cylinder(t_ray *ray, t_object *obj, double *t);
 
 /*
 ** Shading and phong model coloring

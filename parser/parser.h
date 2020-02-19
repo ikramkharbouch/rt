@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 21:05:55 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/07 18:49:50 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/18 22:02:57 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ typedef struct		s_block
 {
 	int				n;
 	char			*name;
-	t_block_list	list[10];
+	t_block_list	list[15];
 }					t_block;
 
 typedef struct		s_parser
 {
 	int				n;
-	t_block			blocks[10];
+	t_block			blocks[15];
 }					t_parser;
 
 t_parser			*parse(char *filename);

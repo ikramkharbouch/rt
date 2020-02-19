@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 18:11:08 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/18 20:05:56 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/18 22:43:55 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,28 +51,15 @@ t_camera	ft_create_cam(t_vec eye, t_vec look_at, float fov)
 	return (camera);
 }
 
-t_ray generate_ray(t_camera *camera, int i, int j)
+t_ray		generate_ray(t_camera *camera, int x, int y)
 {
-    t_ray ray;
-    float deltax;
-    float deltay;
-    float x;
-    float y;
-    ray.origin = camera->eye;
-    deltax = camera->h_height / HEIGHT;
-    deltay = deltax;
-    if (i >= 0 && i <= HEIGHT / 2)
-        x = -(camera->h_height / 2) + i * deltax;
-    if (i > HEIGHT / 2) 
-        x = (i - HEIGHT / 2) * deltax;
-    if (j >= 0 && j <= HEIGHT / 2)
-        y = (camera->h_height / 2) - j * deltay;
-    if (j > HEIGHT / 2)
-        y = - (j - HEIGHT / 2) * deltay;
-    ray.dir = vec_sum(vec_kscale(x, camera->u), vec_kscale(y, camera->v));
-    ray.dir = vec_sum(ray.dir, camera->view_dir);
-    ray.dir = vec_sum(ray.dir, camera->look_at);
-    ray.dir = vec_sum(ray.dir, vec_kscale(-1,ray.origin));
-    ray.dir = vec_normalize(ray.dir);
-    return(ray);
+	t_ray ray;
+	t_vec plane_point;
+
+	ray.origin = camera->eye;
+	plane_point = vec_sum(camera->bottom_left,
+	vec_sum(vec_kscale((float)x / (float)WIDTH,
+	camera->x_incv), vec_kscale((float)y / (float)HEIGHT, camera->y_incv)));
+	ray.dir = vec_normalize(vec_sub(plane_point, camera->eye));
+	return (ray);
 }

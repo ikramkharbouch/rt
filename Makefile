@@ -6,13 +6,13 @@
 #    By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/02 20:53:05 by ikrkharb          #+#    #+#              #
-#    Updated: 2020/02/18 18:18:20 by ikrkharb         ###   ########.fr        #
+#    Updated: 2020/02/18 22:15:32 by ikrkharb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = rtv1
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -g -Wall -Werror -Wextra
 
 SRCS = 	srcs/ray_gen.c\
 		srcs/fill_data.c\

@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 20:54:36 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/18 17:58:54 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/18 22:53:27 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,11 @@ t_trans		char_to_trans(char *str)
 	char	**values;
 	t_trans	trans;
 
+	init_trans(&trans);
+	if (!(*str))
+		return (trans);
 	ft_strtrim(str);
 	values = ft_strsplit(str, ' ');
-	init_trans(&trans);
 	trans.on = !ft_strcmp(values[0], "on") ? 1 : 0;
 	if (trans.on)
 		trans.vec = char_to_vec(shift_str(str));

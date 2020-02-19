@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 19:07:50 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/18 20:10:56 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/19 01:42:22 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int check_sphere_keys(t_block_list *sphere)
 		return (0);
 	if (ft_strcmp(sphere[3].key, "ks") || ft_atof(sphere[3].value) < 0 || ft_atof(sphere[3].value) > 1)
 		return (0);
-	if (ft_strcmp(sphere[4].key, "kd") || ft_atof(sphere[4].value) < 0 ||	ft_atof(sphere[4].value) > 1)
+	if (ft_strcmp(sphere[4].key, "kd") || ft_atof(sphere[4].value) < 0 || ft_atof(sphere[4].value) > 1)
 		return (0);
 	if (ft_strcmp(sphere[5].key, "n"))
 		return (0);
@@ -128,15 +128,18 @@ int check_cone_keys(t_block_list *cone)
 	return (1);
 }
 
-int 	check_shape_keys(t_block_list *list)
+int check_shape_keys(t_block_list *list)
 {
-	if (!ft_strcmp(list[0].value, "sphere"))
-		return (check_sphere_keys(list));
-	if (!ft_strcmp(list[0].value, "cylinder"))
-		return (check_cylinder_keys(list));
-	if (!ft_strcmp(list[0].value, "plane"))
-		return (check_plane_keys(list));
-	if (!ft_strcmp(list[0].value, "cone"))
-		return (check_cone_keys(list));
+	if (list[0].value)
+	{
+		if (!ft_strcmp(list[0].value, "sphere"))
+			return (check_sphere_keys(list));
+		if (!ft_strcmp(list[0].value, "cylinder"))
+			return (check_cylinder_keys(list));
+		if (!ft_strcmp(list[0].value, "plane"))
+			return (check_plane_keys(list));
+		if (!ft_strcmp(list[0].value, "cone"))
+			return (check_cone_keys(list));
+	}
 	return (0);
 }

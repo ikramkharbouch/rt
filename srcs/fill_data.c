@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 16:29:55 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/18 20:00:33 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/18 22:30:58 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ t_list *fill_object_data(t_block *block)
 		if (key == CENTER)
 			obj.center = char_to_vec(list[i].value);
 		if (key == ALPHA)
-			obj.alpha = ft_atof(list[i].value);
+			obj.alpha = DEG_TO_RAD(ft_atof(list[i].value));
 		if (key == VEC_DIR)
 			obj.vec_dir = char_to_vec(list[i].value);
 		if (key == RADIUS)
