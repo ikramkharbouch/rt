@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 20:59:11 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/18 22:29:57 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/21 02:37:38 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_vec sphere_normal(t_object *obj, t_ray *ray)
 {
     t_vec   n;
     t_point i;
+    
     i = vec_sum(ray->origin, vec_kscale(obj->t, ray->dir));
     n = vec_normalize(vec_sub(i, obj->center));
     return (n);
@@ -80,8 +81,9 @@ float diffuse(t_object *obj, t_light *light, t_ray *ray)
     t_vec       normal;
     t_point     p;
     t_vec       light_dir;
+    
     p = vec_sum(ray->origin, vec_kscale(obj->t, ray->dir)); 
-    light_dir = vec_normalize(vec_sub(light->origin, p));  
+    light_dir = vec_normalize(vec_sub(light->origin, p));
     if (!(ft_strcmp(obj->name, "sphere")))
         normal = sphere_normal(obj, ray);
 	if (!(ft_strcmp(obj->name, "plane")))
