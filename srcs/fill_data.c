@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 16:29:55 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/19 20:54:44 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/21 18:59:38 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,19 @@ t_camera fill_camera_data(t_block *block)
 	t_block_list 	*list;
 	t_camera 		camera;
 	int 			key;
-	int 			i;
 
 	list = block->list;
-	i = 0;
 	init_cam(&camera);
-	while (i < block->n)
+	while (list)
 	{
-		key = find_camera_key(list[i].key);
+		key = find_camera_key(list->key);
 		if (key == EYE)
-			camera.eye = char_to_vec(list[i].value);
+			camera.eye = char_to_vec(list->value);
 		if (key == LOOK_AT)
-			camera.look_at = char_to_vec(list[i].value);
+			camera.look_at = char_to_vec(list->value);
 		if (key == FOV)
-			camera.fov = ft_atof(list[i].value);
-		if (key == DIST)
-			camera.dist = ft_atof(list[i].value);
-		i++;
+			camera.fov = ft_atof(list->value);
+		list = list->next;
 	}
 	return (camera);
 }
@@ -43,19 +39,17 @@ t_list *fill_light_data(t_block *block)
 	t_block_list 	*list;
 	t_light 		light;
 	int 			key;
-	int 			i;
 
 	list = block->list;
 	init_light(&light);
-	i = 0;
-	while (i < block->n)
+	while (list)
 	{
-		key = find_light_key(list[i].key);
+		key = find_light_key(list->key);
 		if (key == ORIGIN)
-			light.origin = char_to_vec(list[i].value);
+			light.origin = char_to_vec(list->value);
 		if (key == INTENSITY)
-			light.intensity = ft_atof(list[i].value);
-		i++;
+			light.intensity = ft_atof(list->value);
+		list = list->next;
 	}
 	return (ft_lstnew(&light, sizeof(t_light)));
 }
@@ -65,38 +59,35 @@ t_list *fill_object_data(t_block *block)
 	t_block_list 	*list;
 	t_object		obj;
 	int 			key;
-	int 			i;
 
 	list = block->list;
 	init_obj(&obj);
-	i = 0;
-	while (i < block->n)
+	while (list)
 	{
-		if (list[i].key)
-			key = find_object_key(list[i].key);
+		key = find_object_key(list->key);
 		if (key == NAME)
-			obj.name = list[i].value;
+			obj.name = list->value;
 		if (key == COLOR)
-			obj.color = ft_atoi(list[i].value);
+			obj.color = ft_atoi(list->value);
 		if (key == CENTER)
-			obj.center = char_to_vec(list[i].value);
+			obj.center = char_to_vec(list->value);
 		if (key == ALPHA)
-			obj.alpha = DEG_TO_RAD(ft_atof(list[i].value));
+			obj.alpha = DEG_TO_RAD(ft_atof(list->value));
 		if (key == VEC_DIR)
-			obj.vec_dir = vec_normalize(char_to_vec(list[i].value));
+			obj.vec_dir = vec_normalize(char_to_vec(list->value));
 		if (key == RADIUS)
-			obj.radius = ft_atof(list[i].value);
+			obj.radius = ft_atof(list->value);
 		if (key == KS)
-			obj.ks = ft_atof(list[i].value);
+			obj.ks = ft_atof(list->value);
 		if (key == KD)
-			obj.kd = ft_atof(list[i].value);
+			obj.kd = ft_atof(list->value);
 		if (key == N)
-			obj.n = ft_atof(list[i].value);
+			obj.n = ft_atof(list->value);
 		if (key == ROT)
-			obj.rot = char_to_rot(list[i].value);
+			obj.rot = char_to_rot(list->value);
 		if (key == TRANS)
-			obj.trans = char_to_trans(list[i].value);
-		i++;
+			obj.trans = char_to_trans(list->value);
+		list = list->next;
 	}
 	return (ft_lstnew(&obj, sizeof(t_object)));
 }
@@ -108,15 +99,12 @@ int fill(t_parser *p, t_mlx *mlx)
 	t_list		*lights;
 	t_list		*objects;
 	int			key;
-	int			i;
-
-	i = 0;
-
+	
 	objects = NULL;
 	lights = NULL;
-	while (i < p->n)
+	block = p->blocks;
+	while (block)
 	{
-		block = &(p->blocks[i]);
 		key = find_block(block);
 		if (key == CAMERA)
 			camera = fill_camera_data(block);
@@ -124,7 +112,7 @@ int fill(t_parser *p, t_mlx *mlx)
 			ft_lstadd(&lights, fill_light_data(block));
 		if (key == SHAPE)
 			ft_lstadd(&objects, fill_object_data(block));
-		i++;
+		block = block->next;
 	}
 	// translate(objects);
 	create_actual_objs(mlx, camera, lights, objects);

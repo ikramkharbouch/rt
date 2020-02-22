@@ -5,19 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "gcc build and debug active file",
+            "name": "(lldb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "/Users/ikrkharb/Graphics/RTv1/rtv1",
+            "program": "/Users/ikrkharb/Graphics/RTv1/parser-yaml/parser",
             "args": [
-                "YAML/test.yml"
+                "test.yml"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
-            "MIMode": "lldb",
-            "preLaunchTask": "gcc build active file"
+            "MIMode": "lldb"
         }
     ]
 }

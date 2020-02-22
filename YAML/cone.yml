@@ -1,10 +1,10 @@
 camera:
   - eye:
   0.0 0 -10
-  - look_at: 
+  - look_at:
   0 0 0
   - fov:
-  60.0
+  60
 
   light:
   - origin:
@@ -14,21 +14,21 @@ camera:
 
 object:
 - name:
-  cone
+cone
 - center:
-  0 0 0
+0 0 0
 - vec_dir:
-  1 0 0
+0 1 0
 - alpha:
-  30
+30
 - ks:
-  1
+1
 - kd:
-  1
+1
 - n:
-  60
+20
 - color:
-  24523
+117225
 - rot:
   off 30.0 60.0 70.0
 - trans:

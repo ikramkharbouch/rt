@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/01 19:40:41 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/19 18:47:03 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/21 18:59:58 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int		get_data(char *filename, t_mlx *mlx)
 {
 	t_parser	*p;
+	(void)mlx;
 
 	if (!(p = parse(filename)))
 		return (0);

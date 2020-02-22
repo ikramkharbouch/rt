@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 23:00:09 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/21 02:35:08 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/21 19:00:39 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ double		solution(float a, float b, float c, double *t)
 		return (-b / 2 * a);
 	t1 = (-b + sqrt(b * b - 4 * a * c)) / (2 * a);
 	t2 = (-b - sqrt(b * b - 4 * a * c)) / (2 * a);
-	t1 = t1 < 0 ? FAR : t1;
-	t2 = t2 < 0 ? FAR : t2;
+	// t1 = t1 < 0 ? FAR : t1;
+	// t2 = t2 < 0 ? FAR : t2;
 	if (t1 < t2 && t1 >= 0 && t1 < FAR)
 	{
 		*t = t1;

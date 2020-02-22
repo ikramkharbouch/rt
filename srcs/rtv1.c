@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:20:30 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/18 18:29:59 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/22 00:56:05 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int ac, char *av[])
 		g_env.mlx = mlx;
 		if (!(get_data(av[1], &mlx)))
 		{
-			write(1, "Error\n", 6);
+			write(1, "\033[1;31mError\n\033[0m", 17);
 			return (0);
 		}
 		else

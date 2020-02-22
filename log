@@ -1,0 +1,112 @@
+Objects: 6
+Object: camera
+	List:
+		Key:	eye
+		Value:	0.0 0 -10
+	List:
+		Key:	look_at
+		Value:	0 0 0
+	List:
+		Key:	fov
+		Value:	30.0
+Object: light
+	List:
+		Key:	origin
+		Value:	10 0 0
+	List:
+		Key:	intensity
+		Value:	1
+Object: object
+	List:
+		Key:	name
+		Value:	cone
+	List:
+		Key:	center
+		Value:	0 0 0
+	List:
+		Key:	vec_dir
+		Value:	1 0 0
+	List:
+		Key:	alpha
+		Value:	30
+	List:
+		Key:	ks
+		Value:	0.2
+	List:
+		Key:	kd
+		Value:	0.3
+	List:
+		Key:	n
+		Value:	0.4
+	List:
+		Key:	color
+		Value:	680
+Object: object
+	List:
+		Key:	name
+		Value:	sphere
+	List:
+		Key:	center
+		Value:	0 0 5
+	List:
+		Key:	radius
+		Value:	3
+	List:
+		Key:	ks
+		Value:	0.2
+	List:
+		Key:	kd
+		Value:	0.3
+	List:
+		Key:	n
+		Value:	5
+	List:
+		Key:	color
+		Value:	255
+Object: object
+	List:
+		Key:	name
+		Value:	sphere
+	List:
+		Key:	center
+		Value:	0 0 10
+	List:
+		Key:	radius
+		Value:	6
+	List:
+		Key:	ks
+		Value:	0.2
+	List:
+		Key:	kd
+		Value:	0.3
+	List:
+		Key:	n
+		Value:	8
+	List:
+		Key:	color
+		Value:	16711680
+Object: object
+	List:
+		Key:	name
+		Value:	cylinder
+	List:
+		Key:	center
+		Value:	1 1 0
+	List:
+		Key:	vec_dir
+		Value:	0 1 0
+	List:
+		Key:	radius
+		Value:	2
+	List:
+		Key:	ks
+		Value:	0.2
+	List:
+		Key:	kd
+		Value:	0.3
+	List:
+		Key:	n
+		Value:	0.4
+	List:
+		Key:	color
+		Value:	1232550

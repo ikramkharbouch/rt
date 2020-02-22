@@ -6,17 +6,18 @@
 #    By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/04 21:43:33 by ikrkharb          #+#    #+#              #
-#    Updated: 2020/02/19 17:41:27 by ikrkharb         ###   ########.fr        #
+#    Updated: 2020/02/21 16:51:12 by ikrkharb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libparser.a
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -g -Wall -Wextra -Werror
 
 SRC = 	parser.c\
 		utils.c\
 		init.c\
+		linked_list.c\
 
 OBJ = $(SRC:.c=.o)
 

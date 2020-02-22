@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 21:33:14 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/21 01:18:25 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/21 23:49:32 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,13 @@ int			parse_block(t_block *block, int fd)
 		}
 		else if (type == KEY)
 		{
-			ft_lstadd(block->list, new_list());
+			lstadd_list(&block->list, new_list());
 			block->list->key = pretty_name(line);
 		}
 		else if (type == VALUE)
 		{
+			if (block->list == NULL)
+				return (0);
 			block->list->value = ft_strtrim(line);
 			block->n += 1;
 		}
@@ -85,13 +87,15 @@ t_parser 	*parse(char *filename)
 		}
 		else if (type == BLOCK)
 		{
-			ft_lstadd(p->blocks, new_block(pretty_name(line)));
-			parse_block(&(p->blocks), fd);
+			lstadd_block(&p->blocks, new_block(pretty_name(line)));
+			if (!(parse_block(p->blocks, fd)))
+				return (NULL);
 			p->n += 1;
 		}
 		ft_memdel((void **)&line);
 	}
 	close(fd);
+	reverse_parser(p);
 	return (p);
 }
 
@@ -104,18 +108,20 @@ void		pretty_parser(t_parser *p)
 
 	printf("Objects: %d\n", p->n);
 	i = 0;
-	while (i < p->n)
+	block = p->blocks;
+	while (i < p->n && block)
+	{
+		list = block->list;
+		printf("Object: %s\n", block->name);
+		j = 0;
+		while (j < block->n && list)
 		{
-			block = &(p->blocks[i]);
-			list = block->list;
-			printf("Object: %s\n", block->name);
-			j = 0;
-			while (j < block->n)
-			{
-				printf("\tList:\n\t\tKey:\t%s\n\t\tValue:\t%s\n",
-					list[j].key, list[j].value);
-				j++;
-			}
-			i++;
+			printf("\tList:\n\t\tKey:\t%s\n\t\tValue:\t%s\n",
+				list->key, list->value);
+			j++;
+			list = list->next;
 		}
+		block = block->next;
+		i++;
+	}
 }

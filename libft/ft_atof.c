@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 01:48:02 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/21 02:07:05 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/21 19:51:21 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,3 @@ float ft_atof(char *str)
 		return (nbr - r);
 	return (nbr + r);
 }
-// #include <stdio.h>
-
-// int		main(void)
-// {
-// 	printf("%f\n", ft_atof("1.~~~~~~~~~~~~~~~~~~~~~99"));
-// 	printf("%f\n", atof("1.33.99"));
-// 	return (0);
-// }

@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 17:17:06 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/19 23:26:59 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/22 01:48:35 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include "../libft/libft.h"
-#include "../parser/parser.h"
+#include "../parser-yaml/parser.h"
 
 # define HEIGHT 	800
 # define WIDTH  	800
@@ -281,8 +281,7 @@ int 		check_cone_keys(t_block_list *cone);
 int 		check_shape_keys(t_block_list *list);
 int			check(t_parser *p);
 int			check_vec_values(char *vec);
-int 		check_empty_keys(t_block_list *list, int size);
-int 		check_empty_values(t_block_list *list, int size);
+int			check_empty_parser(t_parser	*p);
 int 		len(t_block_list *list);
 
 /*
