@@ -6,7 +6,7 @@
 #    By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/02 20:53:05 by ikrkharb          #+#    #+#              #
-#    Updated: 2020/02/21 18:14:01 by ikrkharb         ###   ########.fr        #
+#    Updated: 2020/02/23 19:05:59 by ikrkharb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,9 @@ SRCS = 	srcs/ray_gen.c\
 		srcs/parsing_utils.c\
 		srcs/rotate_axes.c\
 		srcs/vec_scaling.c\
+		checker-yaml/check_input.c\
+		checker-yaml/check_input_utils.c\
+		checker-yaml/check_shapes.c\
 
 LIBFT = libft/libft.a
 

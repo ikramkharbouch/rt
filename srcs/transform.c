@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 19:09:58 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/19 16:48:01 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/24 15:47:44 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ t_object	*rotate_axis(t_object *object)
 	t_rot	rot;
 
 	rot = object->rot;
-	object->vec_dir = rotate_z_axis(rotate_y_axis(rotate_x_axis(object->vec_dir,
-	rot.alpha_x), rot.alpha_y), rot.alpha_z);
+	object->vec_dir = vec_normalize(rotate_z_axis(rotate_y_axis(rotate_x_axis(object->vec_dir,
+	rot.alpha_x), rot.alpha_y), rot.alpha_z));
+	object->center = rotate_z_axis(object->center, rot.alpha_z);
 	return (object);
 }
 
@@ -42,7 +43,7 @@ void		translate(t_list *objects)
 {
 	t_list		*tmp;
 	t_object	*object;
-	
+
 	tmp = objects;
 	while (objects)
 	{

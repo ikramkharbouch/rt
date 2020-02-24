@@ -10,6 +10,8 @@
         "functional": "cpp",
         "hashtable": "cpp",
         "typeinfo": "c",
-        "rtv1.h": "c"
+        "rtv1.h": "c",
+        "parser.h": "c",
+        "libft.h": "c"
     }
 }

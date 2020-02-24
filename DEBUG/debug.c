@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/31 16:41:24 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/18 19:50:16 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/23 15:37:40 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,16 +91,16 @@ void debug_light(t_list *lights)
 void	debug_obj(t_list *objects)
 {
 	t_object	*obj;
-	
+
 	while(objects)
 	{
 		obj = objects->content;
 		printf("object_name == %s\n", obj->name);
 		printf("\t\tcenter->x == %f, center->y == %f, origin->z == %f\n", obj->center.x, obj->center.y, obj->center.z);
 		printf("\t\tradius == %f\n", obj->radius);
-		printf("\t\tks == %f\n", obj->ks);
-		printf("\t\tkd == %f\n", obj->kd);
-		printf("\t\tn == %f\n", obj->n);
+		printf("\t\tks == %f\n", obj->coeffs.ks);
+		printf("\t\tkd == %f\n", obj->coeffs.kd);
+		printf("\t\tn == %f\n", obj->coeffs.n);
 		objects = objects->next;
 	}
 }
@@ -143,9 +143,9 @@ void print_list_objects(t_list *list)
 		printf("\tobject->center: %f %f %f\n", object->center.x, object->center.y, object->center.z);
 		printf("\tobject->vec_dir: %f %f %f\n", object->vec_dir.x, object->vec_dir.y, object->vec_dir.z);
 		printf("\tobject->alpha: %f\n", object->alpha);
-		printf("\tobject->n: %f\n", object->n);
-		printf("\tobject->ks: %f\n", object->ks);
-		printf("\tobject->kd: %f\n", object->kd);
+		printf("\tobject->n: %f\n", object->coeffs.n);
+		printf("\tobject->ks: %f\n", object->coeffs.ks);
+		printf("\tobject->kd: %f\n", object->coeffs.kd);
 		printf("\tobject->color: %d\n", object->color);
 		list = list->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 17:56:40 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/18 19:59:43 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/23 15:54:14 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,8 @@ int		find_object_key(char *key)
 		return (CENTER);
 	if (!(ft_strcmp(key, "radius")))
 		return (RADIUS);
-	if (!(ft_strcmp(key, "ks")))
-		return (KS);
-	if ((!ft_strcmp(key, "kd")))
-		return (KD);
-	if ((!ft_strcmp(key, "n")))
-		return (N);
+	if ((!ft_strcmp(key, "lights_coeffs")))
+		return (LIGHT_COEFFS);
 	if ((!ft_strcmp(key, "rot")))
 		return (ROT);
 	if ((!ft_strcmp(key, "trans")))

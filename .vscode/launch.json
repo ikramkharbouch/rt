@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "/Users/ikrkharb/Graphics/RTv1/rtv1",
             "args": [
-                "YAML/test.yml"
+                "YAML/sphere.yml"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

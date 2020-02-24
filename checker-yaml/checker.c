@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 18:09:32 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/22 01:47:12 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/23 16:11:01 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int			order_exists(t_block *block)
 			return (0);
 	}
 	if (name == SHAPE)
-		if (!(check_shape_keys(list)))
+		if (!(check_shape_keys(list, block->n)))
 			return (0);
 	return (1);
 }

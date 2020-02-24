@@ -6,13 +6,13 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 23:19:21 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/22 01:47:54 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/23 16:30:30 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rtv1.h"
 
-int array_length(char **array)
+int		array_length(char **array)
 {
 	int i;
 
@@ -22,26 +22,17 @@ int array_length(char **array)
 	return (i);
 }
 
-int	check_vec_values(char *vec)
+int		len(t_block_list *list)
 {
-	char	**values;
+	int i;
 
-    ft_strtrim(vec);
-	values = ft_strsplit(vec, ' ');
-	return (array_length(values) == 3);
+	i = 0;
+	while (ft_strncmp(list[i].key, "none", 4))
+		i++;
+	return (i);
 }
 
-int len(t_block_list *list)
-{
-    int i;
-
-    i = 0;
-    while (ft_strncmp(list[i].key, "none", 4))
-        i++;
-    return (i);
-}
-
-int		check_empty_parser(t_parser	*p)
+int		check_empty_parser(t_parser *p)
 {
 	t_block			*block;
 	t_block_list	*list;
@@ -55,7 +46,7 @@ int		check_empty_parser(t_parser	*p)
 			return (0);
 		list = block->list;
 		if (!list)
-			return(0);
+			return (0);
 		while (list)
 		{
 			if (!(list->key) || !(list->value))

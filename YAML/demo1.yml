@@ -19,12 +19,8 @@ object:
  0 0 0
  - radius:
    50
- - ks:
-    0
- - kd:
-     0
- - n:
-    0
+ - lights_coeffs:
+    1 1 20
  - color:
      16711680
  - rot:

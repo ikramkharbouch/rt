@@ -6,7 +6,7 @@
 /*   By: ikrkharb <ikrkharb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 16:29:55 by ikrkharb          #+#    #+#             */
-/*   Updated: 2020/02/21 18:59:38 by ikrkharb         ###   ########.fr       */
+/*   Updated: 2020/02/24 14:29:00 by ikrkharb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_camera fill_camera_data(t_block *block)
 	{
 		key = find_camera_key(list->key);
 		if (key == EYE)
-			camera.eye = char_to_vec(list->value);
+			camera.eye = vec_sum(char_to_vec(list->value), (t_vector){0.1, 0.1, 0.1});
 		if (key == LOOK_AT)
 			camera.look_at = char_to_vec(list->value);
 		if (key == FOV)
@@ -77,12 +77,8 @@ t_list *fill_object_data(t_block *block)
 			obj.vec_dir = vec_normalize(char_to_vec(list->value));
 		if (key == RADIUS)
 			obj.radius = ft_atof(list->value);
-		if (key == KS)
-			obj.ks = ft_atof(list->value);
-		if (key == KD)
-			obj.kd = ft_atof(list->value);
-		if (key == N)
-			obj.n = ft_atof(list->value);
+		if (key == LIGHT_COEFFS)
+			obj.coeffs = char_to_coeffs(list->value);
 		if (key == ROT)
 			obj.rot = char_to_rot(list->value);
 		if (key == TRANS)
@@ -99,7 +95,7 @@ int fill(t_parser *p, t_mlx *mlx)
 	t_list		*lights;
 	t_list		*objects;
 	int			key;
-	
+
 	objects = NULL;
 	lights = NULL;
 	block = p->blocks;
@@ -114,7 +110,8 @@ int fill(t_parser *p, t_mlx *mlx)
 			ft_lstadd(&objects, fill_object_data(block));
 		block = block->next;
 	}
-	// translate(objects);
+	translate(objects);
+	rotate(&objects);
 	create_actual_objs(mlx, camera, lights, objects);
 	return (1);
 }

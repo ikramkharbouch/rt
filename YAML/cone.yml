@@ -12,24 +12,20 @@ camera:
   - intensity:
   1
 
-object:
+  object:
 - name:
-cone
+cylinder
 - center:
-0 0 0
+0 1 0
 - vec_dir:
 0 1 0
-- alpha:
-30
-- ks:
-1
-- kd:
-1
-- n:
-20
+- radius:
+2
+- lights_coeffs:
+  1 1 60
 - color:
-117225
+1232550
 - rot:
-  off 30.0 60.0 70.0
+  on 0 0 30
 - trans:
-  off 42 42 42
+  off 0 0 0
